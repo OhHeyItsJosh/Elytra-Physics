@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    group = project.maven_group
+    version = project.mod_version
+
+    base {
+        archivesName = project.mod_id
+    }
+
+    repositories {
+        mavenCentral()
+
+        maven {
+            name = 'ParchmentMC'
+            url = 'https://maven.parchmentmc.org/'
+        }
+
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+
+
+        jcenter()
+    }
+
+    dependencies {
+        implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    }
+
+//    test {
+//        useJUnitPlatform()
+//    }
+}
+

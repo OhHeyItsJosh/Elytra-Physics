@@ -1,0 +1,7 @@
+{
+  "inject_layers": [
+    "com.illusivesoulworks.colytra.client.ColytraLayer",
+    "com.illusivesoulworks.elytraslot.client.ElytraSlotLayer",
+    "com.kyanite.deeperdarker.client.render.SoulElytraRenderer"
+  ]
+}

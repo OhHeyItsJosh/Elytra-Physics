@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "elytra_physics",
+	"version": "${version}",
+	"name": "Elytra Physics",
+	"description": "A simple mod that adds cape-like physics to the elytra when worn by the player.",
+	"authors": [
+		"ImJoshh_"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/elytra-physics-fabric"
+	},
+	"license": "MIT",
+	"icon": "assets/elytra_physics/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"me.ImJoshh.elytra_physics.ElytraPhysicsClientMod"
+		]
+	},
+	"mixins": [
+		"elytra_physics.mixins.json"
+	],
+	"depends": {
+		"minecraft": ["1.19.3", "1.19.4", "1.20.x"]
+	}
+}
