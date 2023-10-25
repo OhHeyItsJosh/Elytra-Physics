@@ -10,6 +10,8 @@ No longer will the elytra look awkward and stiff on your back when running aroun
 
 https://www.curseforge.com/minecraft/mc-mods/elytra-physics
 
+Available for both Forge and Fabric
+
 ## Compatibility
 
 As of version 2.0, the mod now supports adding custom compatibility with layer renderers from other mods.
