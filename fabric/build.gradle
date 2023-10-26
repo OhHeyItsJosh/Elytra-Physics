@@ -11,22 +11,9 @@ repositories {
 	// for more information about repositories.
 }
 
-//loom {
-//    splitEnvironmentSourceSets()
-//
-//	mods {
-//		"modid" {
-//			sourceSet sourceSets.main
-//			sourceSet sourceSets.client
-//		}
-//	}
-//
-//}
-
 archivesBaseName = "${mod_id}-fabric"
 
 dependencies {
-	// To change the versions see the gradle.properties file
 
 	mappings loom.layered() {
 		officialMojangMappings()
@@ -38,9 +25,6 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 //	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-//	implementation "com.googlecode.json-simple:json-simple:1.1.1"
-//	include "com.googlecode.json-simple:json-simple:1.1.1"
 
 	implementation project(":common")
 	
