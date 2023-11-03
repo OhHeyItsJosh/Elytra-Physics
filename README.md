@@ -9,6 +9,7 @@ No longer will the elytra look awkward and stiff on your back when running aroun
 ## Download
 
 https://www.curseforge.com/minecraft/mc-mods/elytra-physics
+https://modrinth.com/mod/elytra-physics
 
 Available for both Forge and Fabric
 
