@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" factoryName="Application" name="Minecraft Client (:forge)" type="Application">
+    <option name="MAIN_CLASS_NAME" value="dev.architectury.transformer.TransformerRuntime"/>
+    <module name="ElytraPhysics.forge.main"/>
+    <option name="PROGRAM_PARAMETERS" value=""/>
+    <option name="VM_PARAMETERS" value="-Dfabric.dli.config=W:\Dev\Minecraft@@0020Mods\Elytra@@0020Physics@@00202.0\ElytraPhysics\forge\.gradle\loom-cache\launch.cfg -Dfabric.dli.env=client -Djava.net.preferIPv6Addresses=system -DunionRelauncher.mainClass=net.minecraftforge.bootstrap.ForgeBootstrap -Dfabric.dli.main=juuxel.unionrelauncher.UnionRelauncher &quot;-Darchitectury.main.class=W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\forge\.gradle\architectury\.main_class&quot; &quot;-Darchitectury.runtime.transformer=W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\forge\.gradle\architectury\.transforms&quot; &quot;-Darchitectury.properties=W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\forge\.gradle\architectury\.properties&quot; -Djdk.attach.allowAttachSelf=true &quot;-javaagent:W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\.gradle\architectury\architectury-transformer-agent.jar&quot;"/>
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/forge/run/"/>
+    <method v="2">
+      <option enabled="true" name="Make"/>
+    </method>
+    <envs>
+      <env name="MOD_CLASSES" value="main%%W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\forge\build\resources\main;main%%W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\forge\build\classes\java\main"/><env name="MCP_MAPPINGS" value="loom.stub"/>
+    </envs>
+    <shortenClasspath name="ARGS_FILE"/>
+  <classpathModifications/></configuration>
+</component>

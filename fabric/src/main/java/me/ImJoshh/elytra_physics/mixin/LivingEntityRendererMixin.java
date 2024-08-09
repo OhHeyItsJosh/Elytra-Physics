@@ -1,5 +1,7 @@
 package me.ImJoshh.elytra_physics.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import me.ImJoshh.elytra_physics.ElytraPhysicsClientMod;
 import me.ImJoshh.elytra_physics.ElytraPhysicsTransformations;
@@ -16,7 +18,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(LivingEntityRenderer.class)
+@Mixin(value = LivingEntityRenderer.class, priority = 500)
 public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extends EntityModel<T>> extends EntityRenderer<T> implements RenderLayerParent<T, M>
 {
     protected LivingEntityRendererMixin(EntityRendererProvider.Context context) {
@@ -24,14 +26,14 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
     }
 
     @SuppressWarnings("unchecked")
-    @Redirect(method="render(Lnet/minecraft/world/entity/LivingEntity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
+    @WrapOperation(method="render(Lnet/minecraft/world/entity/LivingEntity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
     at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/client/renderer/entity/layers/RenderLayer;render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/Entity;FFFFFF)V"
     ))
     private void injectTransformation(RenderLayer<T, M> instance, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight,
-                      Entity livingEntity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks,
-                      float netHeadYaw, float headPitch)
+                                      Entity livingEntity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks,
+                                      float netHeadYaw, float headPitch, Operation original)
     {
         if (livingEntity instanceof LivingEntity)
         {
@@ -53,7 +55,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
                 ElytraPhysicsTransformations.applyMovementTransformation(poseStack, (T) livingEntity, partialTick);
             }
 
-            instance.render(poseStack, multiBufferSource, packedLight, (T) livingEntity, limbSwing, limbSwingAmount, partialTick, ageInTicks, netHeadYaw, headPitch);
+            original.call(instance, poseStack, multiBufferSource, packedLight, (T) livingEntity, limbSwing, limbSwingAmount, partialTick, ageInTicks, netHeadYaw, headPitch);
 
             // pop the pose from the stack once it has been rendered
             if (shouldInject)
