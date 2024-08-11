@@ -1,6 +1,5 @@
 package me.ImJoshh.elytra_physics;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import me.ImJoshh.elytra_physics.config.ConfigData;
 import me.ImJoshh.elytra_physics.config.ConfigKeys;
 import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfigManager;
 import net.fabricmc.api.ClientModInitializer;
@@ -22,6 +21,8 @@ public class ElytraPhysicsClientMod implements ClientModInitializer {
 	{
 		ElytraPhysicsConfigManager.init();
 
+		List<String> injectLayersStrings = new ArrayList<>();
+
 		// add layer injectors from config
 		try {
 			List<Object> layerInjectors = (List<Object>) ElytraPhysicsConfigManager.getConfigValue(ConfigKeys.LAYER_INJECTORS);
@@ -29,7 +30,7 @@ public class ElytraPhysicsClientMod implements ClientModInitializer {
 			{
 				List<String> injectorStrings = layerInjectors.stream().map(Object::toString).toList();
 
-				INJECT_LAYERS_STRINGS.addAll(injectorStrings);
+				injectLayersStrings.addAll(injectorStrings);
 			}
 		}
 		catch (Exception e)
@@ -38,14 +39,15 @@ public class ElytraPhysicsClientMod implements ClientModInitializer {
 		}
 
 		// add vanilla elytra class
-		INJECT_LAYERS_STRINGS.add(ElytraLayer.class.getName());
+		injectLayersStrings.add(ElytraLayer.class.getName());
+
 
 		// convert string list to class list for cheaper comparison
-		for (String layerString : INJECT_LAYERS_STRINGS)
+		for (String layerString : injectLayersStrings)
 		{
 			try {
 				Class<RenderLayer<?, ?>> clazz = (Class<RenderLayer<?, ?>>) Class.forName(layerString);
-				INJECT_LAYERS.add(clazz);
+				ConfigData.addLayerToInject(clazz);
 
 				LOGGER.info("Successfully added class '" + clazz.getName() + "' to layer inject list");
 			}
@@ -55,6 +57,4 @@ public class ElytraPhysicsClientMod implements ClientModInitializer {
 		}
 	}
 
-	public static Set<Class<RenderLayer<?, ?>>> INJECT_LAYERS = new HashSet<>();
-	public static List<String> INJECT_LAYERS_STRINGS = new ArrayList<>();
 }

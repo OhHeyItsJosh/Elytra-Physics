@@ -3,7 +3,7 @@
 	"minVersion": "0.8",
 	"package": "me.ImJoshh.elytra_physics.mixin",
 	"compatibilityLevel": "JAVA_8",
-	"refmap": "elytra_physics.refmap.json",
+	"refmap": "elytra_physics-common-refmap.json",
 	"mixins": [
 	],
 	"client": [

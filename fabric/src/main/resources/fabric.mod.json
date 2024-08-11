@@ -19,7 +19,7 @@
 		]
 	},
 	"mixins": [
-		"elytra_physics.mixins.json"
+      "elytra_physics.mixins.json"
 	],
 	"depends": {
 		"minecraft": ["1.19.3", "1.19.4", "1.20.x","1.21.x"]

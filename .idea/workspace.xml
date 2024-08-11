@@ -5,25 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4505e86-c684-41c8-8d36-2c19c6a7c3be" name="Changes" comment="small tweak to fabric mod file">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/me/ImJoshh/elytra_physics/config/ConfigData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___fabric__fabric.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___fabric__fabric.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___forge__forge.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___forge__forge.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/common/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsTransformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsTransformations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/defaultConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/defaultConfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fabric/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/mixin/LivingEntityRendererMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/mixin/LivingEntityRendererMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsClientMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsClientMod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/mixin/ElytraModelMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/mixin/LivingEntityRendererMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/src/main/resources/elytra_physics.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/elytra_physics.mixins.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fabric/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/src/main/resources/fabric.mod.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forge/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/forge/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/mixin/LivingEntityRendererMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/mixin/LivingEntityRendererMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsMod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/mixin/ElytraModelMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/mixin/LivingEntityRendererMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/src/main/resources/elytra_physics.mixins.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,18 +93,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "W:/Dev/Minecraft Mods/Elytra Physics 2.0/ElytraPhysics/common/src/main/resources",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "Debugger_Data_Views_Java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;W:/Dev/Minecraft Mods/Elytra Physics 2.0/ElytraPhysics/common/src/main/resources&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Debugger_Data_Views_Java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\common\src\main\resources" />

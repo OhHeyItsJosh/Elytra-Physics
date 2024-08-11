@@ -11,7 +11,7 @@ public class ElytraPhysicsTransformations {
     {
         if (livingEntity instanceof AbstractClientPlayer abstractClientPlayerEntity) {
             if (!livingEntity.isCrouching() && !livingEntity.isFallFlying()) {
-                //basically the code from the cape renderer with a few tweaks
+                // mostly the same as the cape render layer
                 double d = Mth.lerp((double)partialTicks, abstractClientPlayerEntity.xCloakO, abstractClientPlayerEntity.xCloak) - Mth.lerp((double)partialTicks, abstractClientPlayerEntity.xo, abstractClientPlayerEntity.getX());
                 double e = Mth.lerp((double)partialTicks, abstractClientPlayerEntity.yCloakO, abstractClientPlayerEntity.yCloak )- Mth.lerp((double)partialTicks, abstractClientPlayerEntity.yo, abstractClientPlayerEntity.getY());
                 double m = Mth.lerp((double)partialTicks, abstractClientPlayerEntity.zCloakO, abstractClientPlayerEntity.zCloak) - Mth.lerp((double)partialTicks, abstractClientPlayerEntity.zo, abstractClientPlayerEntity.getZ());
@@ -30,9 +30,6 @@ public class ElytraPhysicsTransformations {
 
                 float t = Mth.lerp(partialTicks, abstractClientPlayerEntity.oBob, abstractClientPlayerEntity.bob);
                 q += Mth.sin(Mth.lerp(partialTicks, abstractClientPlayerEntity.walkDistO, abstractClientPlayerEntity.walkDist) * 6.0F) * 32.0F * t;
-//                if (abstractClientPlayerEntity.isInSneakingPose()) {
-//                    q += 25.0F;
-//                }
 
                 float declineFactor = 0.2f;
                 matrixStack.translate(0, declineFactor * (r / 150), 0);
@@ -51,7 +48,6 @@ public class ElytraPhysicsTransformations {
         if (entity instanceof AbstractClientPlayer) {
             if (entity.isFallFlying()) return originalValue;
 
-            //float speed = (float) entity.getVelocity().length();
             double deltaX = Math.abs(entity.xo - entity.getX());
             double deltaY = Math.abs(entity.yo - entity.getY());
             double deltaZ = Math.abs(entity.zo - entity.getZ());

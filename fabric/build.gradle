@@ -40,20 +40,15 @@ configurations {
 archivesBaseName = "${mod_id}-fabric"
 
 dependencies {
+	// fabric mod loader
 	modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
 
+	// mixin extras
 	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
-//	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
+	// common files
 	common(project(path: ':common', configuration: 'namedElements')) { transitive false }
 	shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
-
-	// Uncomment the following line to enable the deprecated Fabric API modules.
-	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
-
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 }
 
 

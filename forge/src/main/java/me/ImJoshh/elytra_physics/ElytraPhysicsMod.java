@@ -1,6 +1,7 @@
 package me.ImJoshh.elytra_physics;
 
 import com.mojang.logging.LogUtils;
+import me.ImJoshh.elytra_physics.config.ConfigData;
 import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfig;
 import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
@@ -25,9 +26,6 @@ public class ElytraPhysicsMod
     public static final String MOD_ID = "elytra_physics";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static List<String> INJECT_LAYERS_STRINGS = new ArrayList<>();
-    public static List<Class<RenderLayer<?, ?>>> INJECT_LAYERS = new ArrayList<>();
-
     public ElytraPhysicsMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -49,15 +47,15 @@ public class ElytraPhysicsMod
         @SubscribeEvent
         public static void onClientStartup(FMLClientSetupEvent event)
         {
-            INJECT_LAYERS_STRINGS.addAll(ElytraPhysicsConfig.LAYER_INJECTORS.get());
+            List<String> injectLayersStrings = new ArrayList<>(ElytraPhysicsConfig.LAYER_INJECTORS.get());
 
-            INJECT_LAYERS_STRINGS.add(ElytraLayer.class.getName());
+            injectLayersStrings.add(ElytraLayer.class.getName());
 
-            for (String injectLayerString : INJECT_LAYERS_STRINGS)
+            for (String injectLayerString : injectLayersStrings)
             {
                 try {
                     Class<RenderLayer<?, ?>> clazz = (Class<RenderLayer<?, ?>>) Class.forName(injectLayerString);
-                    INJECT_LAYERS.add(clazz);
+                    ConfigData.addLayerToInject(clazz);
 
                     LOGGER.info("Successfully added class '" + clazz.getName() + "' to layer inject list");
                 }
