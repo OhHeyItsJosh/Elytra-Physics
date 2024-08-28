@@ -48,7 +48,6 @@ public class ElytraPhysicsMod
         public static void onClientStartup(FMLClientSetupEvent event)
         {
             List<String> injectLayersStrings = new ArrayList<>(ElytraPhysicsConfig.LAYER_INJECTORS.get());
-
             injectLayersStrings.add(ElytraLayer.class.getName());
 
             for (String injectLayerString : injectLayersStrings)

@@ -2,10 +2,6 @@ plugins {
     id 'com.github.johnrengelman.shadow'
 }
 
-//tasks.withType(JavaCompile) {
-//    source(project(":common").sourceSets.main.allSource)
-//}
-
 archivesBaseName = "${mod_id}-forge"
 
 architectury {
@@ -36,6 +32,7 @@ configurations {
         canBeResolved = true
         canBeConsumed = false
     }
+
 }
 
 repositories {
@@ -72,12 +69,10 @@ processResources {
 //        expand version: project.version
 //    }
     var replaceProperties = [
-            minecraft_version: rootProject.minecraft_version, minecraft_version_range: rootProject.forge_mc_version_range,
-            forge_version: rootProject.forge_version, forge_version_range: rootProject.forge_version_range,
-            loader_version_range: rootProject.forge_loader_version_range,
             mod_id: rootProject.mod_id, mod_name: rootProject.mod_name, mod_license: rootProject.mod_license, mod_version: rootProject.mod_version,
             mod_authors: rootProject.mod_authors, mod_description: rootProject.mod_description,
     ]
+
     inputs.properties replaceProperties
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
@@ -91,7 +86,8 @@ shadowJar {
 }
 
 remapJar {
-    input.set shadowJar.archiveFile
+    inputFile.set shadowJar.archiveFile
+
 }
 
 

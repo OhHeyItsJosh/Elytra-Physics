@@ -5,26 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4505e86-c684-41c8-8d36-2c19c6a7c3be" name="Changes" comment="small tweak to fabric mod file">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/me/ImJoshh/elytra_physics/config/ConfigData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Client___forge__forge.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Client___forge__forge.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___fabric__fabric.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___fabric__fabric.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___forge__forge.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___forge__forge.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/common/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsTransformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsTransformations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/defaultConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/defaultConfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsClientMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsClientMod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/mixin/ElytraModelMixin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/src/main/java/me/ImJoshh/elytra_physics/mixin/LivingEntityRendererMixin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/src/main/resources/elytra_physics.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/elytra_physics.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/src/main/resources/fabric.mod.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/elytra_physics.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/elytra_physics.mixins.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forge/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/forge/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsMod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/mixin/ElytraModelMixin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/mixin/LivingEntityRendererMixin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/src/main/resources/elytra_physics.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/forge/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +48,36 @@
             </after_sync>
           </activation>
         </task>
+        <task path="$PROJECT_DIR$/neoforge">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="ElytraPhysics" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ElytraPhysics" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ElytraPhysics" type="f1a62948:ProjectNode" />
+                <item name="forge" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ElytraPhysics" type="f1a62948:ProjectNode" />
+                <item name="neoforge" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ElytraPhysics" type="f1a62948:ProjectNode" />
+                <item name="neoforge" type="2d1252cf:ModuleNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -98,15 +115,23 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;W:/Dev/Minecraft Mods/Elytra Physics 2.0/ElytraPhysics/common/src/main/resources&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;jdk.selected.com.intellij.ui.dsl.builder.impl.RowImpl.sdk&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;W:/Dev/Minecraft Mods/Elytra Physics 2.0/ElytraPhysics/neoforge&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;Debugger_Data_Views_Java&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;jdk.preference.com.intellij.ui.dsl.builder.impl.RowImpl.sdk&quot;: [
+      &quot;17=E:\\Java\\JDK 17&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\neoforge" />
       <recent name="W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\common\src\main\resources" />
       <recent name="W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\forge\src\main\resources" />
       <recent name="W:\Dev\Minecraft Mods\Elytra Physics 2.0\ElytraPhysics\forge\src\main\java\me\ImJoshh\elytra_physics\mixin" />
@@ -118,7 +143,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.ElytraPhysics:forge [build]">
-    <configuration name="ElytraPhysics [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ElytraPhysics [transformProductionNeoForge]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -129,51 +154,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="ElytraPhysics:common [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/common" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="ElytraPhysics:common [prepareWorkspace]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/common" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="prepareWorkspace" />
+            <option value="transformProductionNeoForge" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -206,6 +187,28 @@
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
+    <configuration name="ElytraPhysics:fabric [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="ElytraPhysics:forge [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -228,13 +231,35 @@
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
+    <configuration name="ElytraPhysics:neoforge [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/neoforge" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ElytraPhysics:forge [build]" />
+        <item itemvalue="Gradle.ElytraPhysics:neoforge [build]" />
         <item itemvalue="Gradle.ElytraPhysics:fabric [build]" />
-        <item itemvalue="Gradle.ElytraPhysics:common [build]" />
-        <item itemvalue="Gradle.ElytraPhysics [clean]" />
-        <item itemvalue="Gradle.ElytraPhysics:common [prepareWorkspace]" />
+        <item itemvalue="Gradle.ElytraPhysics [transformProductionNeoForge]" />
+        <item itemvalue="Gradle.ElytraPhysics:fabric [clean]" />
       </list>
     </recent_temporary>
   </component>

@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "[3,)"
+license = "${mod_license}"
+
+[[mods]]
+modId = "elytra_physics"
+version = "${mod_version}"
+displayName = "${mod_name}"
+authors = "${mod_authors}"
+description = '''${mod_description}'''
+logoFile = "assets/elytra_physics/icon.png"
+
+[[dependencies.elytra_physics]]
+modId = "neoforge"
+type = "required"
+versionRange = "[20.4.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.elytra_physics]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.20.4,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[mixins]]
+config = "elytra_physics.mixins.json"
