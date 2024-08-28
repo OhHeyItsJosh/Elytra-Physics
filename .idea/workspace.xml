@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4505e86-c684-41c8-8d36-2c19c6a7c3be" name="Changes" comment="small tweak to fabric mod file">
-      <change afterPath="$PROJECT_DIR$/neoforge/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neoforge/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Client___forge__forge.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Client___forge__forge.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___fabric__fabric.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___fabric__fabric.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___forge__forge.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server___forge__forge.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/elytra_physics.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/elytra_physics.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/forge/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/src/main/java/me/ImJoshh/elytra_physics/ElytraPhysicsMod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forge/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/forge/src/main/resources/META-INF/mods.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neoforge/src/main/resources/META-INF/neoforge.mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/neoforge/src/main/resources/META-INF/neoforge.mods.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
