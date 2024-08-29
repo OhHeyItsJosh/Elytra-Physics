@@ -3,6 +3,7 @@ plugins {
 }
 
 archivesBaseName = "${mod_id}-neoforge"
+version = "${rootProject.mod_version}_mc${rootProject.neoforge_supported_versions}"
 
 architectury {
     platformSetupLoomIde()
