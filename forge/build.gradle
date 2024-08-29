@@ -3,6 +3,7 @@ plugins {
 }
 
 archivesBaseName = "${mod_id}-forge"
+version = "${rootProject.mod_version}_mc${rootProject.forge_supported_versions}"
 
 architectury {
     platformSetupLoomIde()
