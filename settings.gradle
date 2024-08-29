@@ -9,9 +9,7 @@ pluginManagement {
 }
 
 
-include "fabric"
 include "forge"
-include "neoforge"
 include "common"
 
 rootProject.name = 'ElytraPhysics'

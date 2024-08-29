@@ -22,8 +22,8 @@ public class ElytraPhysicsConfig
 
     public static final ForgeConfigSpec.ConfigValue<List<? extends String>> LAYER_INJECTORS = BUILDER
             .comment("Classpaths of modded elytra layers")
-            .defineListAllowEmpty(ConfigKeys.LAYER_INJECTORS,
-                                  ObjectUtils.defaultIfNull(ElytraPhysicsConfig.getFromDefaultConfig(ConfigKeys.LAYER_INJECTORS, ArrayList.class), List.of()),
+            .defineListAllowEmpty(List.of(ConfigKeys.LAYER_INJECTORS),
+                    () -> ObjectUtils.defaultIfNull(ElytraPhysicsConfig.getFromDefaultConfig(ConfigKeys.LAYER_INJECTORS, ArrayList.class), List.of()),
                                   (injector) -> injector instanceof String);
 
     public static final ForgeConfigSpec SPEC = BUILDER.build();
