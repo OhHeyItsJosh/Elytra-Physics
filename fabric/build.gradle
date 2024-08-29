@@ -38,6 +38,7 @@ configurations {
 //}
 
 archivesBaseName = "${mod_id}-fabric"
+version = "${rootProject.mod_version}_mc${rootProject.fabric_supported_versions}"
 
 dependencies {
 	// fabric mod loader
