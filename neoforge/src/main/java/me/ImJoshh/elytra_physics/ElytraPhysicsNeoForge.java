@@ -3,8 +3,8 @@ package me.ImJoshh.elytra_physics;
 import com.mojang.logging.LogUtils;
 import me.ImJoshh.elytra_physics.config.Config;
 import me.ImJoshh.elytra_physics.config.ConfigData;
-import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.layers.WingsLayer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -35,7 +35,7 @@ public final class ElytraPhysicsNeoForge {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             List<String> injectLayersStrings = new ArrayList<>(Config.LAYER_INJECTORS.get());
-            injectLayersStrings.add(ElytraLayer.class.getName());
+            injectLayersStrings.add(WingsLayer.class.getName());
 
             for (String injectLayerString : injectLayersStrings)
             {

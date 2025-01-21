@@ -6,8 +6,8 @@
 	"mixins": [
 	],
 	"client": [
-		"LivingEntityRendererMixin",
-		"ElytraModelMixin"
+		"PlayerRendererMixin",
+		"LivingEntityRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

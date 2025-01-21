@@ -4,8 +4,8 @@ import me.ImJoshh.elytra_physics.config.ConfigKeys;
 import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfigManager;
 import net.fabricmc.api.ClientModInitializer;
 
-import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.layers.WingsLayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +39,7 @@ public class ElytraPhysicsClientMod implements ClientModInitializer {
 		}
 
 		// add vanilla elytra class
-		injectLayersStrings.add(ElytraLayer.class.getName());
+		injectLayersStrings.add(WingsLayer.class.getName());
 
 
 		// convert string list to class list for cheaper comparison

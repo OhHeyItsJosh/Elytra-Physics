@@ -3,8 +3,8 @@ package me.ImJoshh.elytra_physics;
 import com.mojang.logging.LogUtils;
 import me.ImJoshh.elytra_physics.config.ConfigData;
 import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfig;
-import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.layers.WingsLayer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,14 +26,14 @@ public class ElytraPhysicsMod
     public static final String MOD_ID = "elytra_physics";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public ElytraPhysicsMod()
+    public ElytraPhysicsMod(FMLJavaModLoadingContext context)
     {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus modEventBus = context.getModEventBus();
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ElytraPhysicsConfig.SPEC);
+        context.registerConfig(ModConfig.Type.CLIENT, ElytraPhysicsConfig.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event)
@@ -48,7 +48,7 @@ public class ElytraPhysicsMod
         public static void onClientStartup(FMLClientSetupEvent event)
         {
             List<String> injectLayersStrings = new ArrayList<>(ElytraPhysicsConfig.LAYER_INJECTORS.get());
-            injectLayersStrings.add(ElytraLayer.class.getName());
+            injectLayersStrings.add(WingsLayer.class.getName());
 
             for (String injectLayerString : injectLayersStrings)
             {
