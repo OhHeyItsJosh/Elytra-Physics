@@ -23,7 +23,7 @@ description='''${mod_description}'''
 [[dependencies.elytra_physics]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.5,)"
+    versionRange="[1.21.2,)"
     ordering="NONE"
     side="BOTH"
 

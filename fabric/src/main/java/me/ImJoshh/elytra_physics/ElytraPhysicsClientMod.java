@@ -33,8 +33,7 @@ public class ElytraPhysicsClientMod implements ClientModInitializer {
 				injectLayersStrings.addAll(injectorStrings);
 			}
 		}
-		catch (Exception e)
-		{
+		catch (Exception e) {
 			LOGGER.error("Failed to apply config render layer injectors");
 		}
 

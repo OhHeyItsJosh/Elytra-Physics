@@ -20,7 +20,7 @@ side = "BOTH"
 [[dependencies.elytra_physics]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.3,)"
+versionRange = "[1.21.2,)"
 ordering = "NONE"
 side = "BOTH"
 
