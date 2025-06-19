@@ -1,5 +1,5 @@
 plugins {
-	id 'com.github.johnrengelman.shadow'
+	id 'com.gradleup.shadow'
 }
 
 architectury {
@@ -43,9 +43,6 @@ version = "${rootProject.mod_version}_mc${rootProject.fabric_supported_versions}
 dependencies {
 	// fabric mod loader
 	modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-
-	// mixin extras
-	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
 
 	// common files
 	common(project(path: ':common', configuration: 'namedElements')) { transitive false }
