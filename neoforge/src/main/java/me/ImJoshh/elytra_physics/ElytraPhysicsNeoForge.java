@@ -30,7 +30,7 @@ public final class ElytraPhysicsNeoForge {
         modContainer.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);
     }
 
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
     static class ClientEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {

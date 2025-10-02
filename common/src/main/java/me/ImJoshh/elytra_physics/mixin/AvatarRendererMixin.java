@@ -25,9 +25,4 @@ public abstract class AvatarRendererMixin<AvatarlikeEntity extends Avatar & Clie
     private void injectRotation(Avatar avatar, AvatarRenderState avatarRenderState, float f, CallbackInfo callbackInfo) {
         avatarRenderState.elytraRotZ -= ElytraPhysicsTransformations.setWingSpread(avatarRenderState);
     }
-
-//    @Surrogate
-//    private void injectRotation(ClientAvatarEntity avatar, AvatarRenderState avatarRenderState, float f, CallbackInfo callbackInfo) {
-//        avatarRenderState.elytraRotZ -= ElytraPhysicsTransformations.setWingSpread(avatarRenderState);
-//    }
 }

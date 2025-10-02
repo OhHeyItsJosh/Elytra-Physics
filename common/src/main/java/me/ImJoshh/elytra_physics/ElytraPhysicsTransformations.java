@@ -9,7 +9,7 @@ public class ElytraPhysicsTransformations {
     public static void applyElytraTransformation(PoseStack matrixStack, AvatarRenderState avatarState) {
         Quaternionf transformation = (new Quaternionf())
                 .rotateY(-3.1415927F)
-                .rotateX((6.0F + avatarState.capeLean / 2.0F + avatarState.capeFlap) * -0.017453292F)
+                .rotateX(((0.85f * avatarState.capeLean) / 2.0F + avatarState.capeFlap) * -0.017453292F)
                 .rotateZ(avatarState.capeLean2 / 2.0F * 0.017453292F)
                 .rotateY((180.0F - avatarState.capeLean2 / 2.0F) * 0.017453292F);
 
