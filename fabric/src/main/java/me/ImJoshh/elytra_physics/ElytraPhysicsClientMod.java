@@ -1,7 +1,7 @@
 package me.ImJoshh.elytra_physics;
 import me.ImJoshh.elytra_physics.config.ConfigData;
 import me.ImJoshh.elytra_physics.config.ConfigKeys;
-import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfigManager;
+import me.ImJoshh.elytra_physics.config.FabricConfig;
 import net.fabricmc.api.ClientModInitializer;
 
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
@@ -13,19 +13,19 @@ import java.util.*;
 
 public class ElytraPhysicsClientMod implements ClientModInitializer {
 
-	public static final Logger LOGGER = LoggerFactory.getLogger("elytra-physics");
+	public static final Logger LOGGER = LoggerFactory.getLogger("elytra_physics");
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onInitializeClient()
 	{
-		ElytraPhysicsConfigManager.init();
+		FabricConfig.init();
 
 		List<String> injectLayersStrings = new ArrayList<>();
 
 		// add layer injectors from config
 		try {
-			List<Object> layerInjectors = (List<Object>) ElytraPhysicsConfigManager.getConfigValue(ConfigKeys.LAYER_INJECTORS);
+			List<Object> layerInjectors = (List<Object>) FabricConfig.getConfigValue(ConfigKeys.LAYER_INJECTORS);
 			if (layerInjectors != null)
 			{
 				List<String> injectorStrings = layerInjectors.stream().map(Object::toString).toList();

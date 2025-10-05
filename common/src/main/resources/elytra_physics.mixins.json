@@ -3,14 +3,19 @@
   "minVersion": "0.8",
   "package": "me.ImJoshh.elytra_physics.mixin",
   "compatibilityLevel": "JAVA_8",
+  "plugin": "me.ImJoshh.elytra_physics.mixin.ElytraPhysicsMixinPlugin",
   "mixins": [
   ],
   "client": [
     "AbstractClientPlayerMixin",
+    "ClientMannequinMixin",
+
     "LivingEntityRendererMixin",
     "AvatarRendererMixin",
-    "ClientAvatarStateMixin",
-    "ClientMannequinMixin"
+
+    "ClientAvatarStateInjectConstMixin",
+    "ClientAvatarStatePreventSnappingMixin"
+
   ],
   "injectors": {
     "defaultRequire": 1

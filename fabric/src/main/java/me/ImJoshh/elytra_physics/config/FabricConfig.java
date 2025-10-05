@@ -4,12 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import me.ImJoshh.elytra_physics.ElytraPhysicsClientMod;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.util.Map;
+import java.util.Set;
 
-public class ElytraPhysicsConfigManager
+public class FabricConfig
 {
     private static ModConfig loadedConfig;
     private static ModConfig defaultConfig;
@@ -19,7 +21,7 @@ public class ElytraPhysicsConfigManager
         Path configDir = FabricLoader.getInstance().getConfigDir();
         File configFile = configDir.resolve("elytra-physics-config.json").toFile();
 
-        Map<String, Object> defaultConfigJson = getDefaultConfigJSON();
+        Map<String, Object> defaultConfigJson = DefaultConfig.getDefaultConfigJSON(ElytraPhysicsClientMod.class);
 
         if (defaultConfigJson == null)
         {
@@ -55,39 +57,6 @@ public class ElytraPhysicsConfigManager
             loadedConfig.saveConfig();
 
             return fromDefault;
-        }
-
-        return null;
-    }
-
-
-
-    static Map<String, Object> getDefaultConfigJSON()
-    {
-        try {
-            InputStream stream = ElytraPhysicsClientMod.class.getClassLoader().getResourceAsStream("defaultConfig.json");
-            if (stream == null)
-                return null;
-
-            InputStreamReader reader = new InputStreamReader(stream);
-            BufferedReader bufferedReader = new BufferedReader(reader);
-            StringBuilder builder = new StringBuilder();
-
-            String line;
-            while((line = bufferedReader.readLine()) != null)
-            {
-                builder.append(line);
-            }
-
-            bufferedReader.close();
-            reader.close();
-            stream.close();
-
-            Gson gson = new GsonBuilder().create();
-            return gson.fromJson(builder.toString(), Map.class);
-        }
-        catch(Exception e) {
-            e.printStackTrace();
         }
 
         return null;

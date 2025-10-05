@@ -3,7 +3,7 @@ package me.ImJoshh.elytra_physics.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.vertex.PoseStack;
-import me.ImJoshh.elytra_physics.ElytraPhysicsTransformations;
+import me.ImJoshh.elytra_physics.ElytraPhysics;
 import me.ImJoshh.elytra_physics.config.ConfigData;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -35,22 +35,12 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, S extend
     {
         if (entityRenderState instanceof AvatarRenderState playerState)
         {
-            boolean shouldInject = false;
-
-            // check whether the render is an elytra renderer
-            for (Class<RenderLayer<?, ?>> clazz : ConfigData.getLayersToInject())
-            {
-                if (clazz.equals(instance.getClass()))
-                {
-                    shouldInject = true;
-                    break;
-                }
-            }
+            boolean shouldInject = ElytraPhysics.shouldInjectLayer(instance);
 
             if (shouldInject)
             {
                 poseStack.pushPose();
-                ElytraPhysicsTransformations.applyElytraTransformation(poseStack, playerState);
+                ElytraPhysics.applyElytraTransformation(poseStack, playerState);
             }
 
             original.call(instance, poseStack, submitNodeCollector, i, playerState, playerState.yRot, playerState.xRot);

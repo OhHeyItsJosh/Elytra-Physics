@@ -23,7 +23,7 @@ public abstract class ClientMannequinMixin extends Mannequin implements ClientAv
         super(entityType, level);
     }
 
-    @Inject(method = "<init>()V", at = @At("TAIL"))
+    @Inject(method = "<init>", at = @At("TAIL"))
     private void bindMannequinRef(CallbackInfo ci) {
         HasLivingEntityRef mixinState = (HasLivingEntityRef) this.avatarState;
         mixinState.elytraPhysics$setEntityRef(this);

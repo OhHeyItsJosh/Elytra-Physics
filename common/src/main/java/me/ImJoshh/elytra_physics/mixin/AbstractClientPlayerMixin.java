@@ -23,7 +23,7 @@ abstract public class AbstractClientPlayerMixin extends Player implements Client
         super(level, gameProfile);
     }
 
-    @Inject(method = "<init>()V", at = @At("TAIL"))
+    @Inject(method = "<init>", at = @At("TAIL"))
     private void bindPlayerRef(CallbackInfo ci) {
         HasLivingEntityRef mixinState = (HasLivingEntityRef) this.clientAvatarState;
         mixinState.elytraPhysics$setEntityRef(this);

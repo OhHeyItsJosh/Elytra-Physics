@@ -44,6 +44,7 @@ public class ModConfig
 
     public void saveConfig()
     {
+        
         assert (this.hasLinkedFile());
 
         try {

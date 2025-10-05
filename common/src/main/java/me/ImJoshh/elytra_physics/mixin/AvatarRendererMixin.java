@@ -1,6 +1,6 @@
 package me.ImJoshh.elytra_physics.mixin;
 
-import me.ImJoshh.elytra_physics.ElytraPhysicsTransformations;
+import me.ImJoshh.elytra_physics.ElytraPhysics;
 import net.minecraft.client.entity.ClientAvatarEntity;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -11,7 +11,6 @@ import net.minecraft.world.entity.Avatar;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Surrogate;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AvatarRenderer.class)
@@ -23,6 +22,6 @@ public abstract class AvatarRendererMixin<AvatarlikeEntity extends Avatar & Clie
 
     @Inject(method = "extractRenderState", at=@At("TAIL"))
     private void injectRotation(Avatar avatar, AvatarRenderState avatarRenderState, float f, CallbackInfo callbackInfo) {
-        avatarRenderState.elytraRotZ -= ElytraPhysicsTransformations.setWingSpread(avatarRenderState);
+        avatarRenderState.elytraRotZ -= ElytraPhysics.setWingSpread(avatarRenderState);
     }
 }

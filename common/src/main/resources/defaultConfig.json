@@ -5,5 +5,10 @@
     "com.kyanite.deeperdarker.client.render.SoulElytraRenderer",
     "pw.lakuna.elytra_trinket.ElytraTrinketFeatureRenderer",
     "org.betterx.betterend.client.render.ArmoredElytraLayer"
-  ]
+  ],
+  "adaptive_gravity": true,
+  "prevent_snapping": true,
+  "gravity_multiplier": 1,
+  "elytra_lean_multiplier": 1,
+  "elytra_spread_multiplier": 1
 }

@@ -14,7 +14,7 @@ public class DefaultConfig {
         try {
             InputStream stream = modClass.getClassLoader().getResourceAsStream("defaultConfig.json");
             if (stream == null)
-                return null;
+                throw new RuntimeException("Default config for Elytra Physics could not be loaded");
 
             InputStreamReader reader = new InputStreamReader(stream);
             BufferedReader bufferedReader = new BufferedReader(reader);
