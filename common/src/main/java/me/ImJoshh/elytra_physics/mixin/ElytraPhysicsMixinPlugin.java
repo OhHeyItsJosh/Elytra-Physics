@@ -3,6 +3,7 @@ package me.ImJoshh.elytra_physics.mixin;
 import com.mojang.logging.LogUtils;
 import me.ImJoshh.elytra_physics.mixinFlagSystem.ElytraPhysicsMixinFlags;
 import me.ImJoshh.elytra_physics.mixinFlagSystem.MixinFlagsManager;
+import net.minecraft.client.renderer.entity.layers.ParrotOnShoulderLayer;
 import org.objectweb.asm.tree.ClassNode;
 import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -27,7 +28,8 @@ public class ElytraPhysicsMixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         // conditionally apply either the injection or overwrite mixin depending on the mixin flags
-        if (targetClassName.equals("net.minecraft.client.entity.ClientAvatarState"))
+        if (mixinClassName.equals("me.ImJoshh.elytra_physics.mixin.ClientAvatarStatePreventSnappingMixin")
+                || mixinClassName.equals("me.ImJoshh.elytra_physics.mixin.ClientAvatarStateInjectConstMixin"))
         {
             Boolean applySnappingFix = this.mixinFlags.get(ElytraPhysicsMixinFlags.APPLY_SNAPPING_FIX);
 
