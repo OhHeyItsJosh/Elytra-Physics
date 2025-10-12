@@ -1,11 +1,14 @@
 package me.ImJoshh.elytra_physics.config.ui.widget;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 
 public class BooleanConfigValue extends ConfigValue<CycleButton<Boolean>, Boolean> {
 
@@ -15,8 +18,8 @@ public class BooleanConfigValue extends ConfigValue<CycleButton<Boolean>, Boolea
         super(key, defaultValue, minecraft);
 
         CycleButton.Builder<Boolean> builder = CycleButton.builder((val) -> {
-            if (val) return CommonComponents.GUI_YES;
-            else return CommonComponents.GUI_NO;
+            if (val) return ((MutableComponent) CommonComponents.GUI_YES).setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN));
+            else return ((MutableComponent) CommonComponents.GUI_NO).setStyle(Style.EMPTY.withColor(ChatFormatting.RED));
         });
 
         this.toggleButton = builder

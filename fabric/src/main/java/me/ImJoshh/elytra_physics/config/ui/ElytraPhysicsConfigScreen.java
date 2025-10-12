@@ -9,13 +9,14 @@ import me.ImJoshh.elytra_physics.config.field.ListConfigField;
 import me.ImJoshh.elytra_physics.config.ui.widget.BooleanConfigValue;
 import me.ImJoshh.elytra_physics.config.ui.widget.ConfigValue;
 import me.ImJoshh.elytra_physics.config.ui.widget.DoubleConfigValue;
+import me.ImJoshh.elytra_physics.config.ui.widget.StringListConfigValue;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import org.slf4j.Logger;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class ElytraPhysicsConfigScreen extends ConfigScreen {
 
@@ -40,9 +41,8 @@ public class ElytraPhysicsConfigScreen extends ConfigScreen {
             return null;
         }
 
-        if (field instanceof ListConfigField<?> listField) {
-            // TODO : implement
-            return null;
+        if (field instanceof ListConfigField<?> && field.getFieldType().equals(String.class)) {
+            return new StringListConfigValue(field.KEY, (List<String>) configValue, FabricConfig.getDefaultValue(field.KEY), this.minecraft, this);
         }
         else if (field.getFieldType().equals(Double.class)) {
             return new DoubleConfigValue(field.KEY, (Double) configValue, FabricConfig.getDefaultValue(field.KEY), this.minecraft);

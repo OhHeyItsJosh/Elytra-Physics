@@ -33,7 +33,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, S extend
     ))
     private void injectTransformation(RenderLayer<S, M> instance, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, S entityRenderState, float f1, float f2, Operation original)
     {
-        if (entityRenderState instanceof AvatarRenderState playerState)
+        if (ElytraPhysics.getConfig().getEnabled() && entityRenderState instanceof AvatarRenderState playerState)
         {
             boolean shouldInject = ElytraPhysics.shouldInjectLayer(instance);
 
