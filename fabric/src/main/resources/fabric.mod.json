@@ -16,6 +16,9 @@
 	"entrypoints": {
 		"client": [
 			"me.ImJoshh.elytra_physics.ElytraPhysicsClientMod"
+		],
+		"modmenu": [
+			"me.ImJoshh.elytra_physics.config.ModmenuEntrypoint"
 		]
 	},
 	"mixins": [

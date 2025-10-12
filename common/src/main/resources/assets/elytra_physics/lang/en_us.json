@@ -1,4 +1,6 @@
 {
+  "elytra_physics.configuration.title": "Elytra Physics Config",
+
   "elytra_physics.configuration.inject_layers": "Custom Elytra Layers",
   "elytra_physics.configuration.inject_layers.tooltip": "Classpaths of modded elytra layers.",
 
@@ -17,5 +19,8 @@
   "elytra_physics.configuration.elytra_spread_multiplier": "Elytra Spread Multiplier",
   "elytra_physics.configuration.elytra_spread_multiplier.tooltip": "Affects how much the elytra spreads as you are moving.",
 
-  "elytra_physics.configuration.test": "Test Value"
+  "elytra_physics.configuration.test": "Test Value",
+
+  "elytra_physics.narrator.config_option": "Config option: %s",
+  "elytra_physics.narrator.config_option_with_value": "Config option: %s, Current value: %s"
 }

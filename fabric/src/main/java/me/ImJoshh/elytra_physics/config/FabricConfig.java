@@ -1,64 +1,105 @@
 package me.ImJoshh.elytra_physics.config;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import me.ImJoshh.elytra_physics.ElytraPhysics;
 import me.ImJoshh.elytra_physics.ElytraPhysicsClientMod;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.renderer.entity.layers.RenderLayer;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.util.Map;
-import java.util.Set;
+import java.util.function.Consumer;
 
 public class FabricConfig
 {
-    private static ModConfig loadedConfig;
-    private static ModConfig defaultConfig;
+    private static ConfigFile loadedConfig;
+    private static ConfigFile defaultConfig;
+
+    public static final PlatformConfigValueProvider VALUE_PROVIDER;
 
     public static void init()
     {
-        Path configDir = FabricLoader.getInstance().getConfigDir();
-        File configFile = configDir.resolve("elytra-physics-config.json").toFile();
-
         Map<String, Object> defaultConfigJson = DefaultConfig.getDefaultConfigJSON(ElytraPhysicsClientMod.class);
 
         if (defaultConfigJson == null)
         {
-            ElytraPhysicsClientMod.LOGGER.error("Default config file could not be found in mod Jar");
-            return;
+            throw new RuntimeException("Default config file could not be found in mod Jar");
         }
 
-        defaultConfig = ModConfig.fromJSON(defaultConfigJson);
+        defaultConfig = ConfigFile.fromJSON(defaultConfigJson);
+
+        loadConfigFromDisk();
+    }
+
+    private static void loadConfigFromDisk() {
+        assert (defaultConfig != null);
+
+        Path configDir = FabricLoader.getInstance().getConfigDir();
+        File configFile = configDir.resolve("elytra-physics-config.json").toFile();
 
         if (!configFile.exists())
         {
             // set loaded config to default config
             loadedConfig = defaultConfig.copy(configFile);
-            loadedConfig.saveConfig();
+            save(loadedConfig);
         }
         else {
-            loadedConfig = ModConfig.fromFile(configFile);
+            loadedConfig = ConfigFile.fromFile(configFile);
         }
     }
 
-    public static Object getConfigValue(String key)
+    public static <T> T getConfigValue(String key)
     {
 //        ElytraPhysicsClientMod.LOGGER.info("loaded: " + loadedConfig.get(key));
 //        ElytraPhysicsClientMod.LOGGER.info("default: " + defaultConfig.get(key));
-        Object fromLoaded = loadedConfig.get(key);
+        T fromLoaded = loadedConfig.get(key);
         if (fromLoaded != null)
             return fromLoaded;
 
-        Object fromDefault = defaultConfig.get(key);
+        T fromDefault = defaultConfig.get(key);
         if (fromDefault != null)
         {
-            loadedConfig.add(key, fromDefault);
-            loadedConfig.saveConfig();
+            loadedConfig.set(key, fromDefault);
+            save(loadedConfig);
 
             return fromDefault;
         }
 
         return null;
+    }
+
+    public static <T> T getDefaultValue(String key) {
+        return defaultConfig.get(key);
+    }
+
+    public static void attemptSaveOperation(Consumer<ConfigFile> updateFields) {
+        ConfigFile configCopy = loadedConfig.copy();
+        updateFields.accept(configCopy);
+
+        boolean success = save(configCopy);
+        if (success) {
+            loadedConfig = configCopy;
+            ElytraPhysics.getConfig().cacheFields();
+        }
+
+    }
+
+    private static boolean save(ConfigFile file) {
+        try {
+            file.saveConfig();
+            ElytraPhysicsClientMod.LOGGER.info("Successfully saved config to file " + loadedConfig.getFilePath());
+
+            return true;
+
+        }
+        catch (IOException e) {
+            ElytraPhysicsClientMod.LOGGER.error("Config file could not be saved");
+            e.printStackTrace();
+
+            return false;
+        }
+    }
+
+    static {
+        VALUE_PROVIDER = FabricConfig::getConfigValue;
     }
 }

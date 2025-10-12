@@ -14,12 +14,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 //@EventBusSubscriber(modid = ElytraPhysicsNeoForge.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@SuppressWarnings("unchecked")
 public class NeoForgeConfig
 {
     /// static NeoForge config stuff ///
 
     private static final Map<String, Object> DEFAULT_CONFIG = DefaultConfig.getDefaultConfigJSON(ElytraPhysicsNeoForge.class);
     public static final Map<String, ModConfigSpec.ConfigValue<?>> VALUE_ACCESSORS = new HashMap<>();
+    public static final PlatformConfigValueProvider VALUE_PROVIDER;
     public static final ModConfigSpec SPEC;
 
     static {
@@ -73,5 +75,14 @@ public class NeoForgeConfig
         ElytraPhysicsNeoForge.LOGGER.debug("Value '" + key + "' found in default config");
 
         return type.cast(retrieved);
+    }
+
+    static {
+        VALUE_PROVIDER = new PlatformConfigValueProvider() {
+            @Override
+            public <T> T getField(String key) {
+                return (T) VALUE_ACCESSORS.get(key).get();
+            }
+        };
     }
 }

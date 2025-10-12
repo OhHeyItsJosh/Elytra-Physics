@@ -24,18 +24,12 @@ configurations {
 	}
 }
 
-//repositories {
-//	// Add repositories to retrieve artifacts from in here.
-//	// You should only use this when depending on other mods because
-//	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-//	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-//	// for more information about repositories.
-//	maven {
-//		name = 'ParchmentMC'
-//		url = 'https://maven.parchmentmc.org/'
-//	}
-//
-//}
+repositories {
+	maven {
+		name = "Terraformers"
+		url = "https://maven.terraformersmc.com/"
+	}
+}
 
 archivesBaseName = "${mod_id}-fabric"
 version = "${rootProject.mod_version}_mc${rootProject.fabric_supported_versions}"
@@ -47,6 +41,9 @@ dependencies {
 	// common files
 	common(project(path: ':common', configuration: 'namedElements')) { transitive false }
 	shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
+
+	// mod menu
+	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 }
 
 
