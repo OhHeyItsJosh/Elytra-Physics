@@ -1,7 +1,6 @@
 package me.ImJoshh.elytra_physics;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import me.ImJoshh.elytra_physics.config.ConfigData;
 import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfig;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
@@ -9,10 +8,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.joml.Quaternionf;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.function.Supplier;
 
 public class ElytraPhysics {
 

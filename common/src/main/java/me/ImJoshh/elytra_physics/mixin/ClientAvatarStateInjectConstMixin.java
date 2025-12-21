@@ -4,8 +4,6 @@ import me.ImJoshh.elytra_physics.ElytraPhysics;
 import me.ImJoshh.elytra_physics.HasLivingEntityRef;
 import net.minecraft.client.entity.ClientAvatarState;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;

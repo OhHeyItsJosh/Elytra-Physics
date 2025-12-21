@@ -2,7 +2,6 @@ package me.ImJoshh.elytra_physics.mixinFlagSystem;
 
 import com.mojang.logging.LogUtils;
 import me.ImJoshh.elytra_physics.ElytraPhysics;
-import org.apache.logging.log4j.core.jackson.MapEntry;
 
 import java.io.IOException;
 import java.nio.file.Files;

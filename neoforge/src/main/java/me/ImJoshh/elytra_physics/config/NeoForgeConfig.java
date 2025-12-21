@@ -1,17 +1,12 @@
 package me.ImJoshh.elytra_physics.config;
 
 
-import me.ImJoshh.elytra_physics.ElytraPhysics;
 import me.ImJoshh.elytra_physics.ElytraPhysicsNeoForge;
 import me.ImJoshh.elytra_physics.config.field.ConfigField;
 import me.ImJoshh.elytra_physics.config.field.ListConfigField;
-import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.client.renderer.entity.layers.WingsLayer;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 //@EventBusSubscriber(modid = ElytraPhysicsNeoForge.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 @SuppressWarnings("unchecked")
