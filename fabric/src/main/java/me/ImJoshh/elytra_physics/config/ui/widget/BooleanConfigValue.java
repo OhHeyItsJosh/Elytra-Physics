@@ -19,11 +19,10 @@ public class BooleanConfigValue extends ConfigValue<CycleButton<Boolean>, Boolea
         CycleButton.Builder<Boolean> builder = CycleButton.builder((val) -> {
             if (val) return CommonComponents.GUI_YES.copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN));
             else return CommonComponents.GUI_NO.copy().setStyle(Style.EMPTY.withColor(ChatFormatting.RED));
-        });
+        }, value);
 
         this.toggleButton = builder
                 .withValues(OptionInstance.BOOLEAN_VALUES.valueListSupplier())
-                .withInitialValue(value)
                 .displayOnlyValue()
                 .withCustomNarration((component) -> this.getFieldAndValueNarration(component.getValue() ? CommonComponents.GUI_YES : CommonComponents.GUI_NO))
                 .withTooltip((val) -> Tooltip.create(this.getFieldTooltip()))
