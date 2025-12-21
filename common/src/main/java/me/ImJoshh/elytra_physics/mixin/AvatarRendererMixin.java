@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Avatar;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,7 +23,8 @@ public abstract class AvatarRendererMixin<AvatarlikeEntity extends Avatar & Clie
 
     @Inject(method = "extractRenderState", at=@At("TAIL"))
     private void injectRotation(Avatar avatar, AvatarRenderState avatarRenderState, float f, CallbackInfo callbackInfo) {
-        if (ElytraPhysics.getConfig().getEnabled())
+        if (ElytraPhysics.getConfig().getEnabled()) {
             avatarRenderState.elytraRotZ -= ElytraPhysics.setWingSpread(avatarRenderState);
+        }
     }
 }
