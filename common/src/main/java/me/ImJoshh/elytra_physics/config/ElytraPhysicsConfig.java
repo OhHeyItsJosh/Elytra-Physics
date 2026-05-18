@@ -27,6 +27,7 @@ public class ElytraPhysicsConfig {
     private float gravityMultiplier;
     private float leanMultiplier;
     private float spreadMultiplier;
+    private float declineMultiplier;
 
     public ElytraPhysicsConfig(PlatformConfigValueProvider valueProvider) {
         this.valueProvider = valueProvider;
@@ -58,6 +59,7 @@ public class ElytraPhysicsConfig {
         this.gravityMultiplier = (float) ((Double) this.valueProvider.getField(Spec.GRAVITY_MULTIPLIER.KEY)).doubleValue();
         this.leanMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_LEAN_MULTIPLIER.KEY)).doubleValue();
         this.spreadMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_SPREAD_MULTIPLIER.KEY)).doubleValue();
+        this.declineMultiplier = (float) ((Double) this.valueProvider.getField(Spec.DECLINE_MULTIPLIER.KEY)).doubleValue();
 
         // save mixin flags
         ElytraPhysicsMixinFlags.serialise(this.preventSnapping);
@@ -81,6 +83,9 @@ public class ElytraPhysicsConfig {
     public float getSpreadMultiplier() {
         return this.spreadMultiplier;
     }
+    public float getDeclineMultiplier() {
+        return this.declineMultiplier;
+    }
 
     public static class Spec {
         public static ListConfigField<String> LAYER_INJECTORS = new ListConfigField<>("inject_layers", String.class, () -> "");
@@ -92,9 +97,10 @@ public class ElytraPhysicsConfig {
         public static ConfigField<Double> GRAVITY_MULTIPLIER = new ConfigField<>("gravity_multiplier", Double.class);
         public static ConfigField<Double> ELYTRA_LEAN_MULTIPLIER = new ConfigField<>("elytra_lean_multiplier", Double.class);
         public static ConfigField<Double> ELYTRA_SPREAD_MULTIPLIER = new ConfigField<>("elytra_spread_multiplier", Double.class);
+        public static ConfigField<Double> DECLINE_MULTIPLIER = new ConfigField<>("decline_multiplier", Double.class);
 
         public static ConfigField<?>[] get() {
-            return new ConfigField[] {LAYER_INJECTORS, ENABLED, ADAPTIVE_GRAVITY, PREVENT_SNAPPING, GRAVITY_MULTIPLIER, ELYTRA_LEAN_MULTIPLIER, ELYTRA_SPREAD_MULTIPLIER};
+            return new ConfigField[] {LAYER_INJECTORS, ENABLED, ADAPTIVE_GRAVITY, PREVENT_SNAPPING, GRAVITY_MULTIPLIER, ELYTRA_LEAN_MULTIPLIER, ELYTRA_SPREAD_MULTIPLIER, DECLINE_MULTIPLIER};
         }
 
     }

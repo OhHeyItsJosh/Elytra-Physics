@@ -11,5 +11,6 @@
   "prevent_snapping": true,
   "gravity_multiplier": 1,
   "elytra_lean_multiplier": 1,
-  "elytra_spread_multiplier": 1
+  "elytra_spread_multiplier": 1,
+  "decline_multiplier": 1
 }

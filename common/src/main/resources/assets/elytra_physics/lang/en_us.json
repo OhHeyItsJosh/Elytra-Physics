@@ -22,6 +22,9 @@
   "elytra_physics.configuration.elytra_spread_multiplier": "Elytra Spread Multiplier",
   "elytra_physics.configuration.elytra_spread_multiplier.tooltip": "Affects how much the elytra spreads as you are moving.",
 
+  "elytra_physics.configuration.decline_multiplier": "Decline Multiplier",
+  "elytra_physics.configuration.decline_multiplier.tooltip": "Affects how much the elytra moves down while moving to prevent clipping into the players head.",
+
   "elytra_physics.configuration.components.list_edit": "Edit (%s item(s))",
 
   "elytra_physics.narrator.config_option": "Config option: %s",
