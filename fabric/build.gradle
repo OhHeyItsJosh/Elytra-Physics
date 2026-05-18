@@ -1,6 +1,6 @@
 plugins {
     id 'multiloader-loader'
-    id 'fabric-loom'
+    id 'net.fabricmc.fabric-loom'
 }
 
 repositories {
@@ -12,12 +12,8 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings loom.layered {
-        officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
-    }
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+    implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    implementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 }
 
 loom {
@@ -59,13 +55,6 @@ sourceSets.configureEach {
             attributes {
                 attribute(loaderAttribute, 'fabric')
             }
-        }
-    }
-}
-loom.remapConfigurations.configureEach {
-    configurations.named(it.name) {
-        attributes {
-            attribute(loaderAttribute, 'fabric')
         }
     }
 }

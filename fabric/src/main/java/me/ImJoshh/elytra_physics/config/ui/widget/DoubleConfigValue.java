@@ -18,7 +18,7 @@ public class DoubleConfigValue extends ConfigValue<EditBox, Double> {
 
         this.inputBox = new EditBox(this.minecraft.font, 0, 0, WIDTH, ConfigFieldList.ROW_HEIGHT, this.getFieldNarration());
         this.inputBox.setValue(value.toString());
-        this.inputBox.setFilter(this::isNumber);
+//        this.inputBox.setFilter(this::isNumber);
         this.inputBox.setTooltip(Tooltip.create(this.getFieldTooltip()));
     }
 

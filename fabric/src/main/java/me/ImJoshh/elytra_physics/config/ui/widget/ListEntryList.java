@@ -2,7 +2,7 @@ package me.ImJoshh.elytra_physics.config.ui.widget;
 
 import me.ImJoshh.elytra_physics.ElytraPhysicsClientMod;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ContainerObjectSelectionList;
 import net.minecraft.client.gui.components.EditBox;
@@ -13,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -86,9 +87,9 @@ public class ListEntryList<T> extends ContainerObjectSelectionList<ListEntryList
         }
 
         @Override
-        public void renderContent(GuiGraphics guiGraphics, int mouseX, int mouseY, boolean bl, float delta) {
+        public void extractContent(GuiGraphicsExtractor graphics, int mouseX, int mouseY, boolean hovered, float delta) {
             this.addButton.setPosition(this.getContentX() + (ListEntryList.this.getRowWidth() / 2) - (this.addButton.getWidth() / 2), this.getContentY() + ConfigFieldList.ROW_PADDING);
-            this.addButton.render(guiGraphics, mouseX, mouseY, delta);
+            this.addButton.extractRenderState(graphics, mouseX, mouseY, delta);
         }
 
         @Override
@@ -111,7 +112,7 @@ public class ListEntryList<T> extends ContainerObjectSelectionList<ListEntryList
             int editBoxWidth = ListEntryList.this.getRowWidth() - (ConfigFieldList.ROW_PADDING * 3) - ConfigFieldList.ROW_HEIGHT;
             this.valueEditBox = new EditBox(ListEntryList.this.minecraft.font, 0, 0, editBoxWidth, ConfigFieldList.ROW_HEIGHT, CommonComponents.ELLIPSIS);
             this.valueEditBox.setMaxLength(9999);
-            this.valueEditBox.setValue(value);
+            this.valueEditBox.setValue(Objects.requireNonNullElse(value, ""));
 
             this.removeButton = Button
                     .builder(Component.literal("X"), (button) -> removeMe.accept(this))
@@ -121,14 +122,14 @@ public class ListEntryList<T> extends ContainerObjectSelectionList<ListEntryList
         }
 
         @Override
-        public void renderContent(GuiGraphics guiGraphics, int mouseX, int mouseY, boolean bl, float delta) {
+        public void extractContent(GuiGraphicsExtractor graphics, int mouseX, int mouseY, boolean bl, float delta) {
             int y = this.getContentY() + ConfigFieldList.ROW_PADDING;
 
             this.removeButton.setPosition(ListEntryList.this.scrollBarX() - ConfigFieldList.ROW_PADDING - this.removeButton.getWidth(), y);
-            this.removeButton.render(guiGraphics, mouseX, mouseY, delta);
+            this.removeButton.extractRenderState(graphics, mouseX, mouseY, delta);
 
             this.valueEditBox.setPosition(this.getContentX() + ConfigFieldList.ROW_PADDING, y);
-            this.valueEditBox.render(guiGraphics, mouseX, mouseY, delta);
+            this.valueEditBox.extractRenderState(graphics, mouseX, mouseY, delta);
         }
 
         @Override

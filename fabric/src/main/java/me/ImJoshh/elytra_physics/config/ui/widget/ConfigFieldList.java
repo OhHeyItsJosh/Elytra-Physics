@@ -2,7 +2,7 @@ package me.ImJoshh.elytra_physics.config.ui.widget;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
@@ -67,28 +67,29 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
         }
 
         @Override
-        public void renderContent(GuiGraphics guiGraphics, int mouseX, int mouseY, boolean bl, float delta) {
+        public void extractContent(GuiGraphicsExtractor graphics, int mouseX, int mouseY, boolean hovered, float delta) {
             int y = this.getContentY() + ConfigFieldList.ROW_PADDING;
 
             // render reset button
             this.resetButton.active = !this.configValue.isDefault();
             this.resetButton.setPosition(this.parent.scrollBarX() - this.resetButton.getWidth() - CONTENT_PADDING, y);
-            this.resetButton.render(guiGraphics, mouseX, mouseY, delta);
+
+            this.resetButton.extractRenderState(graphics, mouseX, mouseY, delta);
 
             // render label
             Font font = this.parent.minecraft.font;
             int textVerticalOffset = (ConfigFieldList.ROW_HEIGHT - font.lineHeight) / 2;
 
             this.displayText.setPosition(this.getContentX() + CONTENT_PADDING, y + textVerticalOffset);
-            this.displayText.render(guiGraphics, mouseX, mouseY, delta);
+            this.displayText.extractRenderState(graphics, mouseX, mouseY, delta);
 
             // render input widget
             AbstractWidget widget = this.configValue.getWidget();
             widget.setPosition(this.parent.scrollBarX() - (CONTENT_PADDING * 2) - this.resetButton.getWidth() - widget.getWidth(), y);
-            widget.render(guiGraphics, mouseX, mouseY, delta);
+            widget.extractRenderState(graphics, mouseX, mouseY, delta);
 
             // tooltip
-            this.tooltipHolder.refreshTooltipForNextRenderPass(guiGraphics, mouseX, mouseY, bl, this.isFocused(), this.getRectangle());
+            this.tooltipHolder.refreshTooltipForNextRenderPass(graphics, mouseX, mouseY, hovered, this.isFocused(), this.getRectangle());
         }
 
         @Override
