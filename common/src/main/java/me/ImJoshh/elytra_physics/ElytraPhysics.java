@@ -42,17 +42,15 @@ public class ElytraPhysics {
                 ? leanMultiplier * 0.85f
                 : leanMultiplier * 0.25f;
 
-
         Quaternionf transformation = (new Quaternionf())
-                .rotateY(-3.1415927F)
-                .rotateX(((leanMultiplierAdjusted * avatarState.capeLean) / 2.0F + avatarState.capeFlap) * -0.017453292F)
-                .rotateZ(-(avatarState.capeLean2 / 2.0F) * 0.017453292F)
-                .rotateY((180.0F - avatarState.capeLean2 / 2.0F) * 0.017453292F);
+                .rotateX(((leanMultiplierAdjusted * avatarState.capeLean) / 2.0F + avatarState.capeFlap) * 0.017453292F) // TILT
+                .rotateZ((avatarState.capeLean2 / 2.0F) * 0.017453292F) // PAN
+                .rotateY((-avatarState.capeLean2 / 2.0F) * 0.017453292F); // ROLL
 
         // fade transformation out while flying
         if (avatarState.isFallFlying) {
             transformation = transformation.slerp(new Quaternionf(), avatarState.fallFlyingScale());
-    }
+        }
 
         float declineFactor = 0.2f * getConfig().getDeclineMultiplier();
         matrixStack.translate(0.0f, declineFactor * (avatarState.capeLean / 150.0f), 0.0f);
