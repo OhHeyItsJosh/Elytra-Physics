@@ -44,8 +44,8 @@ public class ElytraPhysics {
 
         Quaternionf transformation = (new Quaternionf())
                 .rotateX(((leanMultiplierAdjusted * avatarState.capeLean) / 2.0F + avatarState.capeFlap) * 0.017453292F) // TILT
-                .rotateZ((avatarState.capeLean2 / 2.0F) * 0.017453292F) // PAN
-                .rotateY((-avatarState.capeLean2 / 2.0F) * 0.017453292F); // ROLL
+                .rotateZ(((avatarState.capeLean2 * getConfig().getPanMultiplier()) / 2.0F) * 0.017453292F) // PAN
+                .rotateY(((-avatarState.capeLean2 * getConfig().getRollMultiplier()) / 2.0F) * 0.017453292F); // ROLL
 
         // fade transformation out while flying
         if (avatarState.isFallFlying) {

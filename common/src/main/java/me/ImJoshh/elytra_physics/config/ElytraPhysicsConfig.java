@@ -26,6 +26,8 @@ public class ElytraPhysicsConfig {
     private boolean preventSnapping;
     private float gravityMultiplier;
     private float leanMultiplier;
+    private float panMultiplier;
+    private float rollMultiplier;
     private float spreadMultiplier;
     private float declineMultiplier;
 
@@ -58,6 +60,8 @@ public class ElytraPhysicsConfig {
         this.adaptiveGravity = this.valueProvider.getField(Spec.ADAPTIVE_GRAVITY.KEY);
         this.gravityMultiplier = (float) ((Double) this.valueProvider.getField(Spec.GRAVITY_MULTIPLIER.KEY)).doubleValue();
         this.leanMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_LEAN_MULTIPLIER.KEY)).doubleValue();
+        this.panMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_PAN_MULTIPLIER.KEY)).doubleValue();
+        this.rollMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_ROLL_MULTIPLIER.KEY)).doubleValue();
         this.spreadMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_SPREAD_MULTIPLIER.KEY)).doubleValue();
         this.declineMultiplier = (float) ((Double) this.valueProvider.getField(Spec.DECLINE_MULTIPLIER.KEY)).doubleValue();
 
@@ -86,6 +90,12 @@ public class ElytraPhysicsConfig {
     public float getDeclineMultiplier() {
         return this.declineMultiplier;
     }
+    public float getPanMultiplier() {
+        return this.panMultiplier;
+    }
+    public float getRollMultiplier() {
+        return this.rollMultiplier;
+    }
 
     public static class Spec {
         public static ListConfigField<String> LAYER_INJECTORS = new ListConfigField<>("inject_layers", String.class, () -> "");
@@ -96,11 +106,24 @@ public class ElytraPhysicsConfig {
 
         public static ConfigField<Double> GRAVITY_MULTIPLIER = new ConfigField<>("gravity_multiplier", Double.class);
         public static ConfigField<Double> ELYTRA_LEAN_MULTIPLIER = new ConfigField<>("elytra_lean_multiplier", Double.class);
+        public static ConfigField<Double> ELYTRA_PAN_MULTIPLIER = new ConfigField<>("elytra_pan_multiplier", Double.class);
+        public static ConfigField<Double> ELYTRA_ROLL_MULTIPLIER = new ConfigField<>("elytra_roll_multiplier", Double.class);
         public static ConfigField<Double> ELYTRA_SPREAD_MULTIPLIER = new ConfigField<>("elytra_spread_multiplier", Double.class);
         public static ConfigField<Double> DECLINE_MULTIPLIER = new ConfigField<>("decline_multiplier", Double.class);
 
         public static ConfigField<?>[] get() {
-            return new ConfigField[] {LAYER_INJECTORS, ENABLED, ADAPTIVE_GRAVITY, PREVENT_SNAPPING, GRAVITY_MULTIPLIER, ELYTRA_LEAN_MULTIPLIER, ELYTRA_SPREAD_MULTIPLIER, DECLINE_MULTIPLIER};
+            return new ConfigField[] {
+                    LAYER_INJECTORS,
+                    ENABLED,
+                    ADAPTIVE_GRAVITY,
+                    PREVENT_SNAPPING,
+                    GRAVITY_MULTIPLIER,
+                    ELYTRA_LEAN_MULTIPLIER,
+                    ELYTRA_PAN_MULTIPLIER,
+                    ELYTRA_ROLL_MULTIPLIER,
+                    ELYTRA_SPREAD_MULTIPLIER,
+                    DECLINE_MULTIPLIER
+            };
         }
 
     }

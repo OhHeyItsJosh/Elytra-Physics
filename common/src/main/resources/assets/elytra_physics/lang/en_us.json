@@ -5,10 +5,10 @@
   "elytra_physics.configuration.enabled.tooltip": "Whether the visuals are enabled.",
 
   "elytra_physics.configuration.inject_layers": "Custom Elytra Layers",
-  "elytra_physics.configuration.inject_layers.tooltip": "Classpaths of modded elytra layers.",
+  "elytra_physics.configuration.inject_layers.tooltip": "Classpaths for modded elytra layers.",
 
   "elytra_physics.configuration.adaptive_gravity": "Adaptive Gravity (affects capes)",
-  "elytra_physics.configuration.adaptive_gravity.tooltip": "Whether elytra and cape physics are influenced by the players gravity.",
+  "elytra_physics.configuration.adaptive_gravity.tooltip": "Whether elytra and cape physics are influenced by the players gravity attribute.",
 
   "elytra_physics.configuration.prevent_snapping": "Prevent Snapping (affects capes)",
   "elytra_physics.configuration.prevent_snapping.tooltip": "Fixes the bug where capes (and now elytras) snap back to default position when moving at high speeds. This fix overwrites a method and could cause conflicts with other mods. \n[REQUIRES RESTART]",
@@ -16,8 +16,14 @@
   "elytra_physics.configuration.gravity_multiplier": "Gravity Multiplier (affects capes)",
   "elytra_physics.configuration.gravity_multiplier.tooltip": "Affects the gravity applied to capes and elytras.",
 
-  "elytra_physics.configuration.elytra_lean_multiplier": "Elytra Lean Multiplier",
-  "elytra_physics.configuration.elytra_lean_multiplier.tooltip": "Affects how far back the elytra leans.",
+  "elytra_physics.configuration.elytra_lean_multiplier": "Elytra Tilt Multiplier",
+  "elytra_physics.configuration.elytra_lean_multiplier.tooltip": "Affects how much the elytra tilts upwards during movement.",
+
+  "elytra_physics.configuration.elytra_pan_multiplier": "Elytra Pan Multiplier",
+  "elytra_physics.configuration.elytra_pan_multiplier.tooltip": "Affects how much the elytra pans side to side during movement.",
+
+  "elytra_physics.configuration.elytra_roll_multiplier": "Elytra Roll Multiplier",
+  "elytra_physics.configuration.elytra_roll_multiplier.tooltip": "Affects how much the elytra rolls during movement.",
 
   "elytra_physics.configuration.elytra_spread_multiplier": "Elytra Spread Multiplier",
   "elytra_physics.configuration.elytra_spread_multiplier.tooltip": "Affects how much the elytra spreads as you are moving.",
