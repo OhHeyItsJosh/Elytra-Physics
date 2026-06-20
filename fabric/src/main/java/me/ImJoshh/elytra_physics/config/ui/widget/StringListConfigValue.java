@@ -41,7 +41,7 @@ public class StringListConfigValue extends ConfigValue<Button, List<String>> {
             this.updateButtonText();
         });
 
-        this.minecraft.setScreen(editScreen);
+        this.minecraft.setScreenAndShow(editScreen);
     }
 
     private void updateButtonText() {
