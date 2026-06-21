@@ -13,7 +13,7 @@ import java.util.*;
 
 public class ElytraPhysicsClientMod implements ClientModInitializer {
 
-	public static final Logger LOGGER = LoggerFactory.getLogger("elytra-physics");
+	public static final Logger LOGGER = LoggerFactory.getLogger(ElytraPhysics.MOD_ID);
 
 	@Override
 	@SuppressWarnings("unchecked")
