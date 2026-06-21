@@ -1,6 +1,6 @@
 package me.ImJoshh.elytra_physics.mixin;
 
-import me.ImJoshh.elytra_physics.ElytraPhysicsTransformations;
+import me.ImJoshh.elytra_physics.ElytraPhysics;
 import net.minecraft.client.model.AgeableListModel;
 import net.minecraft.client.model.ElytraModel;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,7 +14,12 @@ public abstract class ElytraModelMixin<T extends LivingEntity> extends AgeableLi
 
     @ModifyVariable(method = "setupAnim(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V", at = @At(value = "STORE"), ordinal = 6)
     private float setSpread(float l, T entity) {
-        return ElytraPhysicsTransformations.setWingRoll(l, entity);
+        if (ElytraPhysics.getConfig().getEnabled()) {
+            return ElytraPhysics.setWingSpread(l, entity);
+        }
+        else {
+            return l;
+        }
     }
 
 }

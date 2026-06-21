@@ -1,10 +1,8 @@
 package me.ImJoshh.elytra_physics;
 
 import com.mojang.logging.LogUtils;
-import me.ImJoshh.elytra_physics.config.Config;
-import me.ImJoshh.elytra_physics.config.ConfigData;
-import net.minecraft.client.renderer.entity.layers.ElytraLayer;
-import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfig;
+import me.ImJoshh.elytra_physics.config.NeoForgeConfig;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,42 +11,40 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.slf4j.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
 
-
-@Mod(ElytraPhysicsNeoForge.MOD_ID)
+@Mod(ElytraPhysics.MOD_ID)
 public final class ElytraPhysicsNeoForge {
 
-    public static final String MOD_ID = "elytra_physics";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ElytraPhysicsNeoForge(final IEventBus eventBus, final ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, NeoForgeConfig.SPEC);
+
+        LOGGER.info("LOADER SETUP RUN");
+
+        if (FMLEnvironment.dist.isClient()) {
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        }
     }
 
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = ElytraPhysics.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     static class ClientEvents {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            List<String> injectLayersStrings = new ArrayList<>(Config.LAYER_INJECTORS.get());
-            injectLayersStrings.add(ElytraLayer.class.getName());
+        private static void onConfigLoad(ModConfigEvent.Loading event) {
+            LOGGER.debug("config loaded, caching values");
+            ElytraPhysics.setConfig(new ElytraPhysicsConfig(NeoForgeConfig.VALUE_PROVIDER));
+        }
 
-            for (String injectLayerString : injectLayersStrings)
-            {
-                try {
-                    Class<RenderLayer<?, ?>> clazz = (Class<RenderLayer<?, ?>>) Class.forName(injectLayerString);
-                    ConfigData.addLayerToInject(clazz);
-
-                    LOGGER.info("Successfully added class '" + clazz.getName() + "' to layer inject list");
-                }
-                catch (Exception e) {
-                    LOGGER.info("Class '" + injectLayerString + "' not found");
-                }
-            }
+        @SubscribeEvent
+        private static void onConfigReload(ModConfigEvent.Reloading event) {
+            LOGGER.debug("config reloaded, re-caching values");
+            ElytraPhysics.getConfig().cacheFields();
         }
     }
 }

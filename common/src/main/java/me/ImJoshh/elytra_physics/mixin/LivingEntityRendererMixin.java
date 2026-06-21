@@ -3,7 +3,7 @@ package me.ImJoshh.elytra_physics.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.vertex.PoseStack;
-import me.ImJoshh.elytra_physics.ElytraPhysicsTransformations;
+import me.ImJoshh.elytra_physics.ElytraPhysics;
 import me.ImJoshh.elytra_physics.config.ConfigData;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -34,31 +34,24 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
                                       Entity livingEntity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks,
                                       float netHeadYaw, float headPitch, Operation original)
     {
-        if (livingEntity instanceof LivingEntity)
+        if (ElytraPhysics.getConfig().getEnabled() && livingEntity instanceof LivingEntity)
         {
-            boolean shouldInject = false;
-
-            // check whether the render is an elytra renderer
-            for (Class<RenderLayer<?, ?>> clazz : ConfigData.getLayersToInject())
-            {
-                if (clazz.equals(instance.getClass()))
-                {
-                    shouldInject = true;
-                    break;
-                }
-            }
+            boolean shouldInject = ElytraPhysics.shouldInjectLayer(instance);
 
             if (shouldInject)
             {
                 poseStack.pushPose();
-                ElytraPhysicsTransformations.applyMovementTransformation(poseStack, (T) livingEntity, partialTick);
+                ElytraPhysics.applyMovementTransformation(poseStack, (T) livingEntity, partialTick);
             }
 
-            original.call(instance, poseStack, multiBufferSource, packedLight, (T) livingEntity, limbSwing, limbSwingAmount, partialTick, ageInTicks, netHeadYaw, headPitch);
+            original.call(instance, poseStack, multiBufferSource, packedLight, livingEntity, limbSwing, limbSwingAmount, partialTick, ageInTicks, netHeadYaw, headPitch);
 
             // pop the pose from the stack once it has been rendered
             if (shouldInject)
                 poseStack.popPose();
+        }
+        else {
+            original.call(instance, poseStack, multiBufferSource, packedLight, livingEntity, limbSwing, limbSwingAmount, partialTick, ageInTicks, netHeadYaw, headPitch);
         }
     }
 }
