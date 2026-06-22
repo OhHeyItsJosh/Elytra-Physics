@@ -1,7 +1,6 @@
 package me.ImJoshh.elytra_physics;
 
 import com.mojang.logging.LogUtils;
-import me.ImJoshh.elytra_physics.config.ConfigData;
 import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfig;
 import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;

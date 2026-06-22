@@ -16,12 +16,15 @@
 	"entrypoints": {
 		"client": [
 			"me.ImJoshh.elytra_physics.ElytraPhysicsClientMod"
+		],
+		"modmenu": [
+			"me.ImJoshh.elytra_physics.config.ModmenuEntrypoint"
 		]
 	},
 	"mixins": [
       "elytra_physics.mixins.json"
 	],
 	"depends": {
-		"minecraft": ["1.19.3", "1.19.4", "1.20.x","1.21.1"]
+		"minecraft": ["1.19.3", "1.19.4", "1.20.x", "1.21", "1.21.1"]
 	}
 }
