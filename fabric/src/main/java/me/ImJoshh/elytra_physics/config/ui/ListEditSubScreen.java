@@ -2,8 +2,8 @@ package me.ImJoshh.elytra_physics.config.ui;
 
 import me.ImJoshh.elytra_physics.config.ui.widget.ListEntryList;
 import net.minecraft.client.Options;
+import net.minecraft.client.gui.screens.OptionsSubScreen;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.OptionsSubScreen;
 import net.minecraft.network.chat.Component;
 
 import java.util.List;
@@ -29,15 +29,21 @@ public class ListEditSubScreen<T> extends OptionsSubScreen {
     }
 
     @Override
-    protected void addContents() {
-        this.entryList = this.layout.addToContents(new ListEntryList<>(this.minecraft, this.values, this.clazz));
+    protected void init() {
+        super.init();
+        this.addRenderableWidget(new ListEntryList<>(this.minecraft, this.values, this.clazz));
     }
 
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        this.entryList.updateSize(this.width, this.layout);
-    }
+    //    @Override
+//    protected void addContents() {
+//        this.entryList = this.layout.addToContents(new ListEntryList<>(this.minecraft, this.values, this.clazz));
+//    }
+//
+//    @Override
+//    protected void repositionElements() {
+//        this.layout.arrangeElements();
+//        this.entryList.updateSize(this.width, this.layout);
+//    }
 
     @Override
     public void onClose() {
@@ -45,7 +51,7 @@ public class ListEditSubScreen<T> extends OptionsSubScreen {
 
         this.onComplete.accept(this.entryList.getValues());
     }
-
-    @Override
-    protected void addOptions() {}
+//
+//    @Override
+//    protected void addOptions() {}
 }

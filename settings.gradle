@@ -10,6 +10,7 @@ pluginManagement {
 
 
 include "forge"
+include "fabric"
 include "common"
 
 rootProject.name = 'ElytraPhysics'

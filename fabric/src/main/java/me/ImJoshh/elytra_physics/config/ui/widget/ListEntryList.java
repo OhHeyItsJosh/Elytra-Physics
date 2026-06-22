@@ -24,7 +24,7 @@ public class ListEntryList<T> extends ContainerObjectSelectionList<ListEntryList
     private final AddBtnListEntry addOption;
 
     public ListEntryList(Minecraft minecraft, List<T> values, Class<T> clazz) {
-        super(minecraft, 0, 0 , 0, ConfigFieldList.ROW_HEIGHT + (ConfigFieldList.ROW_PADDING * 2));
+        super(minecraft, 0, 0 , 0, ConfigFieldList.ROW_HEIGHT + (ConfigFieldList.ROW_PADDING * 2), 0);
 
         this.entryProvider = this.determineEntryProvider(clazz);
 

@@ -30,9 +30,9 @@ public abstract class ConfigScreen extends Screen {
     protected void init() {
         ConfigValue<?, ?>[] entries = this.getConfigEntries();
 
-        this.layout.addTitleHeader(this.title, this.font);
+//        this.layout.addTitleHeader(this.title, this.font);
 
-        LinearLayout buttonRow = this.layout.addToFooter(LinearLayout.horizontal().spacing(4));
+        LinearLayout buttonRow = this.layout.addToFooter(new LinearLayout(0, 0, LinearLayout.Orientation.HORIZONTAL));
 
         this.cancelButton = buttonRow.addChild(Button.builder(Component.translatable("gui.cancel"), (button) -> {
             this.onClose();
@@ -54,6 +54,6 @@ public abstract class ConfigScreen extends Screen {
     @Override
     protected void repositionElements() {
         this.layout.arrangeElements();
-        this.configList.updateSize(this.width, this.layout);
+//        this.configList.updateSize(this.width, this.layout);
     }
 }

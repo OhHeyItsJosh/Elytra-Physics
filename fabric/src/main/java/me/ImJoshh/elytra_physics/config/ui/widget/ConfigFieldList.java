@@ -1,23 +1,25 @@
 package me.ImJoshh.elytra_physics.config.ui.widget;
 
-import me.ImJoshh.elytra_physics.ElytraPhysics;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
+import net.minecraft.client.gui.layouts.LayoutElement;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.function.Consumer;
 
-public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldList.ConfigFieldEntry> {
+public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldList.ConfigFieldEntry> implements LayoutElement {
 
     public static int ROW_HEIGHT = 20;
     public static int ROW_PADDING = 2;
+
     public ConfigFieldList(Minecraft minecraft, ConfigValue<?, ?>[] entries) {
-        super(minecraft, 0, 0 , 0, ROW_HEIGHT + (ROW_PADDING * 2));
+        super(minecraft, 0, 0 , 0, ROW_HEIGHT + (ROW_PADDING * 2), 0);
 
         for (ConfigValue<?, ?> entry : entries)
         {
@@ -34,6 +36,40 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
         return 400;
     }
 
+    @Override
+    public void setX(int i) {
+    }
+
+    @Override
+    public void setY(int i) {
+
+    }
+
+    @Override
+    public int getX() {
+        return 0;
+    }
+
+    @Override
+    public int getY() {
+        return 0;
+    }
+
+    @Override
+    public int getWidth() {
+        return 0;
+    }
+
+    @Override
+    public int getHeight() {
+        return 0;
+    }
+
+    @Override
+    public void visitWidgets(Consumer<AbstractWidget> consumer) {
+
+    }
+
     public static class ConfigFieldEntry extends ContainerObjectSelectionList.Entry<ConfigFieldEntry> {
 
         final static int CONTENT_PADDING = 8;
@@ -43,7 +79,7 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
         private final Button resetButton;
         private final StringWidget displayText;
 
-        private final WidgetTooltipHolder tooltipHolder = new WidgetTooltipHolder();
+//        private final WidgetTooltipHolder tooltipHolder = new WidgetTooltipHolder();
         private final Tooltip tooltip;
 
         ConfigValue<?, ?> configValue;
@@ -64,7 +100,7 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
 
             // create tooltip
             this.tooltip = Tooltip.create(this.configValue.getFieldTooltip());
-            this.tooltipHolder.set(this.tooltip);
+            this.displayText.setTooltip(this.tooltip);
         }
 
         @Override
@@ -86,11 +122,12 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
 
             // render input widget
             AbstractWidget widget = this.configValue.getWidget();
+            widget.setTooltip(this.tooltip);
             widget.setPosition((contentX + width) - (CONTENT_PADDING * 2) - this.resetButton.getWidth() - widget.getWidth(), y);
             widget.render(graphics, mouseX, mouseY, delta);
 
             // tooltip
-            this.tooltipHolder.refreshTooltipForNextRenderPass(hovered, this.isFocused(), this.getRectangle());
+//            this.tooltipHolder.refreshTooltipForNextRenderPass(hovered, this.isFocused(), this.getRectangle());
         }
 
         @Override
