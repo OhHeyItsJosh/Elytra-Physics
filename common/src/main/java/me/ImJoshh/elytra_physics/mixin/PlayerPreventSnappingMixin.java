@@ -1,8 +1,8 @@
 package me.ImJoshh.elytra_physics.mixin;
 
 import me.ImJoshh.elytra_physics.ElytraPhysics;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(Player.class)
-abstract public class PlayerPreventSnappingMixin extends Entity {
+abstract public class PlayerPreventSnappingMixin extends LivingEntity {
 
     @Shadow protected double xCloak;
     @Shadow protected double yCloak;
@@ -20,9 +20,10 @@ abstract public class PlayerPreventSnappingMixin extends Entity {
     @Shadow protected double yCloakO;
     @Shadow protected double zCloakO;
 
-    public PlayerPreventSnappingMixin(EntityType<?> entityType, Level level) {
+    public PlayerPreventSnappingMixin(EntityType<LivingEntity> entityType, Level level) {
         super(entityType, level);
     }
+
 
     /**
      * @author ImJoshh
@@ -55,9 +56,10 @@ abstract public class PlayerPreventSnappingMixin extends Entity {
         else {
             double base = 0.25;
 
+            double playerGravity = ElytraPhysics.getConfig().adaptiveGravityEnabled() ? ElytraPhysics.getEntityGravity(this) : 0.08;
             double gravityMultiplier = ElytraPhysics.getConfig().getGravityMultiplier();
 
-            double gravityCoefficient = (0.75 * (gravityMultiplier - 1) * base) + base;
+            double gravityCoefficient = (0.75 * (gravityMultiplier * playerGravity * 12.5 - 1) * base) + base;
 
             this.xCloak += cloakDistanceVec.x * gravityCoefficient;
             this.yCloak += cloakDistanceVec.y * gravityCoefficient;

@@ -1,12 +1,13 @@
 package me.ImJoshh.elytra_physics;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfig;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.joml.Quaternionf;
 
 public class ElytraPhysics {
@@ -111,5 +112,18 @@ public class ElytraPhysics {
         }
 
         return false;
+    }
+
+    public static double getEntityGravity(LivingEntity entity) {
+        final double DEFAULT = 0.08;
+
+        if (entity == null)
+            return DEFAULT;
+
+        AttributeInstance gravityAttribute = entity.getAttribute(Attributes.GRAVITY);
+        if (gravityAttribute == null)
+            return DEFAULT;
+
+        return gravityAttribute.getValue();
     }
 }

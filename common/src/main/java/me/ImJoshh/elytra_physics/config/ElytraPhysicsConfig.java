@@ -22,6 +22,7 @@ public class ElytraPhysicsConfig {
 
     private Set<Class<RenderLayer<?, ?>>> elytraLayers;
     private boolean enabled;
+    private boolean adaptiveGravity;
     private boolean preventSnapping;
     private float gravityMultiplier;
     private float leanMultiplier;
@@ -56,6 +57,7 @@ public class ElytraPhysicsConfig {
         // fetch other variables
         this.enabled = this.valueProvider.getField(Spec.ENABLED.KEY);
         this.preventSnapping = this.valueProvider.getField(Spec.PREVENT_SNAPPING.KEY);
+        this.adaptiveGravity = this.valueProvider.getField(Spec.ADAPTIVE_GRAVITY.KEY);
         this.gravityMultiplier = (float) ((Double) this.valueProvider.getField(Spec.GRAVITY_MULTIPLIER.KEY)).doubleValue();
         this.leanMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_LEAN_MULTIPLIER.KEY)).doubleValue();
         this.panMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_PAN_MULTIPLIER.KEY)).doubleValue();
@@ -72,6 +74,9 @@ public class ElytraPhysicsConfig {
     }
     public boolean getEnabled() {
         return this.enabled;
+    }
+    public boolean adaptiveGravityEnabled() {
+        return this.adaptiveGravity;
     }
     public float getGravityMultiplier() {
         return this.gravityMultiplier;
@@ -96,6 +101,7 @@ public class ElytraPhysicsConfig {
         public static ListConfigField<String> LAYER_INJECTORS = new ListConfigField<>("inject_layers", String.class, () -> "");
 
         public static ConfigField<Boolean> ENABLED = new ConfigField<>("enabled", Boolean.class);
+        public static ConfigField<Boolean> ADAPTIVE_GRAVITY = new ConfigField<>("adaptive_gravity", Boolean.class);
         public static ConfigField<Boolean> PREVENT_SNAPPING = new ConfigField<>("prevent_snapping", Boolean.class);
 
         public static ConfigField<Double> GRAVITY_MULTIPLIER = new ConfigField<>("gravity_multiplier", Double.class);
@@ -109,6 +115,7 @@ public class ElytraPhysicsConfig {
             return new ConfigField[] {
                     LAYER_INJECTORS,
                     ENABLED,
+                    ADAPTIVE_GRAVITY,
                     PREVENT_SNAPPING,
                     GRAVITY_MULTIPLIER,
                     ELYTRA_LEAN_MULTIPLIER,
