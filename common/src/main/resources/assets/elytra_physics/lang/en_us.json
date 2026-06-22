@@ -1,5 +1,6 @@
 {
   "elytra_physics.configuration.title": "Elytra Physics Config",
+  "elytra_physics.configuration.save": "Save",
 
   "elytra_physics.configuration.enabled": "Enabled",
   "elytra_physics.configuration.enabled.tooltip": "Whether the visuals are enabled.",
