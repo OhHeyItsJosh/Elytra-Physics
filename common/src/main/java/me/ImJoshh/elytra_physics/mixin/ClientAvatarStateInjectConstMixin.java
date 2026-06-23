@@ -31,7 +31,7 @@ public class ClientAvatarStateInjectConstMixin implements HasLivingEntityRef {
 
     @ModifyConstant(method = "moveCloak", constant = @Constant(doubleValue = 0.25))
     private double injectGravityCoefficient(double value) {
-        double playerGravity = ElytraPhysics.getEntityGravity(this.elytraPhysics$entityRef);
+        double playerGravity = ElytraPhysics.getConfig().adaptiveGravityEnabled() ? ElytraPhysics.getEntityGravity(this.elytraPhysics$entityRef) : 0.08;
         double gravityMultiplier = ElytraPhysics.getConfig().getGravityMultiplier();
 
         return (0.75 * (gravityMultiplier * playerGravity * 12.5 - 1) * value) + value;
