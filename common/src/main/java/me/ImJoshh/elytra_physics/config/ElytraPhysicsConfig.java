@@ -38,7 +38,7 @@ public class ElytraPhysicsConfig {
 
     public void cacheFields() {
         // load elytra layers into set of classes for easier comparison
-        List<String> injectLayersStrings = new ArrayList<>(this.valueProvider.getField(Spec.LAYER_INJECTORS.KEY));
+        List<String> injectLayersStrings = new ArrayList<>(this.configBridge.getFieldValue(Spec.LAYER_INJECTORS.KEY));
         injectLayersStrings.add(ElytraLayer.class.getName());
 
         this.elytraLayers = injectLayersStrings.stream().map((layerClassName) -> {

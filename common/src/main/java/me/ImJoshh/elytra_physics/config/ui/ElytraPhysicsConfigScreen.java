@@ -10,6 +10,7 @@ import me.ImJoshh.elytra_physics.config.ui.widget.BooleanConfigValue;
 import me.ImJoshh.elytra_physics.config.ui.widget.ConfigValue;
 import me.ImJoshh.elytra_physics.config.ui.widget.DoubleConfigValue;
 import me.ImJoshh.elytra_physics.config.ui.widget.StringListConfigValue;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import org.slf4j.Logger;
 
@@ -22,6 +23,10 @@ public class ElytraPhysicsConfigScreen extends ConfigScreen {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ElytraPhysicsConfigScreen() {
+        super(Component.translatable("elytra_physics.configuration.title"));
+    }
+
+    public ElytraPhysicsConfigScreen(Screen parent) {
         super(Component.translatable("elytra_physics.configuration.title"));
     }
 

@@ -29,7 +29,7 @@ public final class ElytraPhysicsNeoForge {
         LOGGER.info("LOADER SETUP RUN");
 
         if (FMLEnvironment.dist.isClient()) {
-            modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, screen) -> new ElytraPhysicsConfigScreen());
         }
     }
 
