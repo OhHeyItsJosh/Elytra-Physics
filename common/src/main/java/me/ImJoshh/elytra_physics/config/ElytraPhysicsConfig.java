@@ -18,7 +18,7 @@ public class ElytraPhysicsConfig {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    private final PlatformConfigValueProvider valueProvider;
+    public final PlatformConfigBridge configBridge;
 
     private Set<Class<RenderLayer<?, ?>>> elytraLayers;
     private boolean enabled;
@@ -30,8 +30,8 @@ public class ElytraPhysicsConfig {
     private float spreadMultiplier;
     private float declineMultiplier;
 
-    public ElytraPhysicsConfig(PlatformConfigValueProvider valueProvider) {
-        this.valueProvider = valueProvider;
+    public ElytraPhysicsConfig(PlatformConfigBridge configBridge) {
+        this.configBridge = configBridge;
         this.cacheFields();
     }
 
@@ -54,14 +54,14 @@ public class ElytraPhysicsConfig {
         }).filter(Objects::nonNull).collect(Collectors.toSet());
 
         // fetch other variables
-        this.enabled = this.valueProvider.getField(Spec.ENABLED.KEY);
-        this.preventSnapping = this.valueProvider.getField(Spec.PREVENT_SNAPPING.KEY);
-        this.gravityMultiplier = (float) ((Double) this.valueProvider.getField(Spec.GRAVITY_MULTIPLIER.KEY)).doubleValue();
-        this.leanMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_LEAN_MULTIPLIER.KEY)).doubleValue();
-        this.panMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_PAN_MULTIPLIER.KEY)).doubleValue();
-        this.rollMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_ROLL_MULTIPLIER.KEY)).doubleValue();
-        this.spreadMultiplier = (float) ((Double) this.valueProvider.getField(Spec.ELYTRA_SPREAD_MULTIPLIER.KEY)).doubleValue();
-        this.declineMultiplier = (float) ((Double) this.valueProvider.getField(Spec.DECLINE_MULTIPLIER.KEY)).doubleValue();
+        this.enabled = this.configBridge.getFieldValue(Spec.ENABLED.KEY);
+        this.preventSnapping = this.configBridge.getFieldValue(Spec.PREVENT_SNAPPING.KEY);
+        this.gravityMultiplier = (float) ((Double) this.configBridge.getFieldValue(Spec.GRAVITY_MULTIPLIER.KEY)).doubleValue();
+        this.leanMultiplier = (float) ((Double) this.configBridge.getFieldValue(Spec.ELYTRA_LEAN_MULTIPLIER.KEY)).doubleValue();
+        this.panMultiplier = (float) ((Double) this.configBridge.getFieldValue(Spec.ELYTRA_PAN_MULTIPLIER.KEY)).doubleValue();
+        this.rollMultiplier = (float) ((Double) this.configBridge.getFieldValue(Spec.ELYTRA_ROLL_MULTIPLIER.KEY)).doubleValue();
+        this.spreadMultiplier = (float) ((Double) this.configBridge.getFieldValue(Spec.ELYTRA_SPREAD_MULTIPLIER.KEY)).doubleValue();
+        this.declineMultiplier = (float) ((Double) this.configBridge.getFieldValue(Spec.DECLINE_MULTIPLIER.KEY)).doubleValue();
 
         // save mixin flags
         ElytraPhysicsMixinFlags.serialise(this.preventSnapping);

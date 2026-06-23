@@ -4,6 +4,7 @@ package me.ImJoshh.elytra_physics.config;
 import me.ImJoshh.elytra_physics.ElytraPhysicsNeoForge;
 import me.ImJoshh.elytra_physics.config.field.ConfigField;
 import me.ImJoshh.elytra_physics.config.field.ListConfigField;
+import me.ImJoshh.elytra_physics.config.ui.widget.ConfigValue;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.*;
@@ -16,7 +17,7 @@ public class NeoForgeConfig
 
     private static final Map<String, Object> DEFAULT_CONFIG = DefaultConfig.getDefaultConfigJSON(ElytraPhysicsNeoForge.class);
     public static final Map<String, ModConfigSpec.ConfigValue<?>> VALUE_ACCESSORS = new HashMap<>();
-    public static final PlatformConfigValueProvider VALUE_PROVIDER;
+    public static final PlatformConfigBridge CONFIG_BRIDGE;
     public static final ModConfigSpec SPEC;
 
     static {
@@ -73,10 +74,25 @@ public class NeoForgeConfig
     }
 
     static {
-        VALUE_PROVIDER = new PlatformConfigValueProvider() {
+        CONFIG_BRIDGE = new PlatformConfigBridge() {
             @Override
-            public <T> T getField(String key) {
+            public <T> T getFieldValue(String key) {
                 return (T) VALUE_ACCESSORS.get(key).get();
+            }
+
+            @Override
+            public <T> T getFieldDefaultValue(String key) {
+                return (T) VALUE_ACCESSORS.get(key).getDefault();
+            }
+
+            @Override
+            public void saveConfig(ConfigValue<?, ?>[] entries) {
+                for (ConfigValue<?, ?> entry :  entries)
+                {
+                    ((ModConfigSpec.ConfigValue<Object>)VALUE_ACCESSORS.get(entry.getKey())).set(entry.getValue());
+                }
+
+                SPEC.save();
             }
         };
     }

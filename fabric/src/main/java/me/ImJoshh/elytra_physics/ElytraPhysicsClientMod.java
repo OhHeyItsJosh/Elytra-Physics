@@ -15,7 +15,7 @@ public class ElytraPhysicsClientMod implements ClientModInitializer {
 	public void onInitializeClient()
 	{
 		FabricConfig.init();
-		ElytraPhysics.setConfig(new ElytraPhysicsConfig(FabricConfig.VALUE_PROVIDER));
+		ElytraPhysics.setConfig(new ElytraPhysicsConfig(FabricConfig.CONFIG_BRIDGE));
 	}
 
 }

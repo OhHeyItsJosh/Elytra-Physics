@@ -2,6 +2,7 @@ package me.ImJoshh.elytra_physics.config;
 
 import me.ImJoshh.elytra_physics.ElytraPhysics;
 import me.ImJoshh.elytra_physics.ElytraPhysicsClientMod;
+import me.ImJoshh.elytra_physics.config.ui.widget.ConfigValue;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.*;
@@ -14,7 +15,7 @@ public class FabricConfig
     private static ConfigFile loadedConfig;
     private static ConfigFile defaultConfig;
 
-    public static final PlatformConfigValueProvider VALUE_PROVIDER;
+    public static final PlatformConfigBridge CONFIG_BRIDGE;
 
     public static void init()
     {
@@ -100,6 +101,26 @@ public class FabricConfig
     }
 
     static {
-        VALUE_PROVIDER = FabricConfig::getConfigValue;
+        CONFIG_BRIDGE = new PlatformConfigBridge() {
+            @Override
+            public <T> T getFieldValue(String key) {
+                return FabricConfig.getConfigValue(key);
+            }
+
+            @Override
+            public <T> T getFieldDefaultValue(String key) {
+                return FabricConfig.getDefaultValue(key);
+            }
+
+            @Override
+            public void saveConfig(ConfigValue<?, ?>[] entries) {
+                FabricConfig.attemptSaveOperation((configFile) -> {
+                    for (ConfigValue<?, ?> entry : entries)
+                    {
+                        configFile.set(entry.getKey(), entry.getValue());
+                    }
+                });
+            }
+        };
     }
 }

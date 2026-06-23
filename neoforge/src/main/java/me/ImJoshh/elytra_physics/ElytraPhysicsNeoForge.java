@@ -3,6 +3,7 @@ package me.ImJoshh.elytra_physics;
 import com.mojang.logging.LogUtils;
 import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfig;
 import me.ImJoshh.elytra_physics.config.NeoForgeConfig;
+import me.ImJoshh.elytra_physics.config.ui.ElytraPhysicsConfigScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -16,7 +17,6 @@ import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.slf4j.Logger;
-
 
 @Mod(ElytraPhysics.MOD_ID)
 public final class ElytraPhysicsNeoForge {
@@ -35,10 +35,11 @@ public final class ElytraPhysicsNeoForge {
 
     @EventBusSubscriber(modid = ElytraPhysics.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     static class ClientEvents {
+        // cache config values whenever config is loaded or reloaded
         @SubscribeEvent
         private static void onConfigLoad(ModConfigEvent.Loading event) {
             LOGGER.debug("config loaded, caching values");
-            ElytraPhysics.setConfig(new ElytraPhysicsConfig(NeoForgeConfig.VALUE_PROVIDER));
+            ElytraPhysics.setConfig(new ElytraPhysicsConfig(NeoForgeConfig.CONFIG_BRIDGE));
         }
 
         @SubscribeEvent
