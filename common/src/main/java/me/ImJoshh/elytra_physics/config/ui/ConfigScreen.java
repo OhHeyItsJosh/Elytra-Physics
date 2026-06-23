@@ -1,6 +1,5 @@
 package me.ImJoshh.elytra_physics.config.ui;
 
-import com.mojang.logging.LogUtils;
 import me.ImJoshh.elytra_physics.config.ui.widget.ConfigFieldList;
 import me.ImJoshh.elytra_physics.config.ui.widget.ConfigValue;
 import net.minecraft.client.gui.components.Button;
@@ -8,11 +7,8 @@ import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
 
 public abstract class ConfigScreen extends Screen {
-
-    private final static Logger LOGGER = LogUtils.getLogger();
 
     private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 40, 40);
     private ConfigFieldList configList;
