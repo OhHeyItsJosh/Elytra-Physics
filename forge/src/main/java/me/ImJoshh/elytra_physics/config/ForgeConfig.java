@@ -1,9 +1,12 @@
 package me.ImJoshh.elytra_physics.config;
 
 
+import me.ImJoshh.elytra_physics.ElytraPhysics;
 import me.ImJoshh.elytra_physics.ElytraPhysicsForge;
 import me.ImJoshh.elytra_physics.config.field.ConfigField;
 import me.ImJoshh.elytra_physics.config.field.ListConfigField;
+import me.ImJoshh.elytra_physics.config.ui.ElytraPhysicsConfigScreen;
+import me.ImJoshh.elytra_physics.config.ui.widget.ConfigValue;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.*;
@@ -16,7 +19,7 @@ public class ForgeConfig
 
     private static final Map<String, Object> DEFAULT_CONFIG = DefaultConfig.getDefaultConfigJSON(ElytraPhysicsForge.class);
     public static final Map<String, ForgeConfigSpec.ConfigValue<?>> VALUE_ACCESSORS = new HashMap<>();
-    public static final PlatformConfigValueProvider VALUE_PROVIDER;
+    public static final PlatformConfigBridge CONFIG_BRIDGE;
     public static final ForgeConfigSpec SPEC;
 
     static {
@@ -72,10 +75,28 @@ public class ForgeConfig
     }
 
     static {
-        VALUE_PROVIDER = new PlatformConfigValueProvider() {
+        CONFIG_BRIDGE = new PlatformConfigBridge() {
             @Override
-            public <T> T getField(String key) {
+            public <T> T getFieldValue(String key) {
                 return (T) VALUE_ACCESSORS.get(key).get();
+            }
+
+            @Override
+            public <T> T getFieldDefaultValue(String key) {
+                return (T) VALUE_ACCESSORS.get(key).getDefault();
+            }
+
+            @Override
+            public void saveConfig(ConfigValue<?, ?>[] entries) {
+                for (ConfigValue<?, ?> entry :  entries)
+                {
+                    ((ForgeConfigSpec.ConfigValue<Object>)VALUE_ACCESSORS.get(entry.getKey())).set(entry.getValue());
+                }
+
+                SPEC.save();
+
+                ElytraPhysicsForge.LOGGER.debug("config reloaded, re-caching values");
+                ElytraPhysics.getConfig().cacheFields();
             }
         };
     }
