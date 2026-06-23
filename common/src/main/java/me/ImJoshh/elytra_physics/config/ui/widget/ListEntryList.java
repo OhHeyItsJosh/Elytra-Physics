@@ -1,6 +1,6 @@
 package me.ImJoshh.elytra_physics.config.ui.widget;
 
-import me.ImJoshh.elytra_physics.ElytraPhysicsClientMod;
+import me.ImJoshh.elytra_physics.config.ui.ElytraPhysicsConfigScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -47,7 +47,7 @@ public class ListEntryList<T> extends ContainerObjectSelectionList<ListEntryList
             return (str) -> new StringListEntry((String) str, this::removeEntry);
 
         else {
-            ElytraPhysicsClientMod.LOGGER.warn(String.format("%s config list type is not currently supported", clazz.getName()));
+            ElytraPhysicsConfigScreen.LOGGER.warn(String.format("%s config list type is not currently supported", clazz.getName()));
             return null;
         }
     }

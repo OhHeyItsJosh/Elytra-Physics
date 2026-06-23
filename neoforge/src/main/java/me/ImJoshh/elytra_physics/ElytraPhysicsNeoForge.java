@@ -3,6 +3,7 @@ package me.ImJoshh.elytra_physics;
 import com.mojang.logging.LogUtils;
 import me.ImJoshh.elytra_physics.config.ElytraPhysicsConfig;
 import me.ImJoshh.elytra_physics.config.NeoForgeConfig;
+import me.ImJoshh.elytra_physics.config.ui.ElytraPhysicsConfigScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,7 +14,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.slf4j.Logger;
 
@@ -28,7 +28,7 @@ public final class ElytraPhysicsNeoForge {
         LOGGER.info("LOADER SETUP RUN");
 
         if (FMLEnvironment.getDist().isClient()) {
-            modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, (_, _) -> new ElytraPhysicsConfigScreen());
         }
     }
 
@@ -38,7 +38,7 @@ public final class ElytraPhysicsNeoForge {
         @SubscribeEvent
         private static void onConfigLoad(ModConfigEvent.Loading event) {
             LOGGER.debug("config loaded, caching values");
-            ElytraPhysics.setConfig(new ElytraPhysicsConfig(NeoForgeConfig.VALUE_PROVIDER));
+            ElytraPhysics.setConfig(new ElytraPhysicsConfig(NeoForgeConfig.CONFIG_BRIDGE));
         }
 
         @SubscribeEvent
