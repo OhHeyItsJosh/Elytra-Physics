@@ -23,8 +23,8 @@ public class ListEntryList<T> extends ContainerObjectSelectionList<ListEntryList
     private final Function<T, ConfigListEntry> entryProvider;
     private final AddBtnListEntry addOption;
 
-    public ListEntryList(Minecraft minecraft, List<T> values, Class<T> clazz) {
-        super(minecraft, 0, 0 , 0, ConfigFieldList.ROW_HEIGHT + (ConfigFieldList.ROW_PADDING * 2), 0);
+    public ListEntryList(Minecraft minecraft, List<T> values, Class<T> clazz, int width, int height, int x, int y) {
+        super(minecraft, width, height, x, y, ConfigFieldList.ROW_HEIGHT + (ConfigFieldList.ROW_PADDING * 2));
 
         this.entryProvider = this.determineEntryProvider(clazz);
 
@@ -74,6 +74,11 @@ public class ListEntryList<T> extends ContainerObjectSelectionList<ListEntryList
         return 300;
     }
 
+    @Override
+    protected int getScrollbarPosition() {
+        return this.x0 + (this.width / 2) + (this.getRowWidth() / 2);
+    }
+
     public class AddBtnListEntry extends ConfigListEntry {
 
         private final Button addButton;
@@ -109,7 +114,7 @@ public class ListEntryList<T> extends ContainerObjectSelectionList<ListEntryList
         private final Button removeButton;
 
         public StringListEntry(String value, Consumer<ConfigListEntry> removeMe) {
-            int editBoxWidth = ListEntryList.this.getRowWidth() - (ConfigFieldList.ROW_PADDING * 3) - ConfigFieldList.ROW_HEIGHT;
+            int editBoxWidth = ListEntryList.this.getRowWidth() - (ConfigFieldList.ROW_PADDING * 4) - ConfigFieldList.ROW_HEIGHT;
             this.valueEditBox = new EditBox(ListEntryList.this.minecraft.font, 0, 0, editBoxWidth, ConfigFieldList.ROW_HEIGHT, CommonComponents.ELLIPSIS);
             this.valueEditBox.setMaxLength(9999);
             this.valueEditBox.setValue(Objects.requireNonNullElse(value, ""));

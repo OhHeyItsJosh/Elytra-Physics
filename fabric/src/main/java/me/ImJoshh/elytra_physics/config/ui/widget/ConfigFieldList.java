@@ -5,21 +5,19 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.layouts.LayoutElement;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.function.Consumer;
 
-public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldList.ConfigFieldEntry> implements LayoutElement {
+public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldList.ConfigFieldEntry> {
 
     public static int ROW_HEIGHT = 20;
     public static int ROW_PADDING = 2;
 
-    public ConfigFieldList(Minecraft minecraft, ConfigValue<?, ?>[] entries) {
-        super(minecraft, 0, 0 , 0, ROW_HEIGHT + (ROW_PADDING * 2), 0);
+    public ConfigFieldList(Minecraft minecraft, ConfigValue<?, ?>[] entries, int width, int height, int x, int y) {
+        super(minecraft, width, height, x, y, ROW_HEIGHT + (ROW_PADDING * 2));
 
         for (ConfigValue<?, ?> entry : entries)
         {
@@ -37,37 +35,8 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
     }
 
     @Override
-    public void setX(int i) {
-    }
-
-    @Override
-    public void setY(int i) {
-
-    }
-
-    @Override
-    public int getX() {
-        return 0;
-    }
-
-    @Override
-    public int getY() {
-        return 0;
-    }
-
-    @Override
-    public int getWidth() {
-        return 0;
-    }
-
-    @Override
-    public int getHeight() {
-        return 0;
-    }
-
-    @Override
-    public void visitWidgets(Consumer<AbstractWidget> consumer) {
-
+    protected int getScrollbarPosition() {
+        return this.x0 + (this.width / 2) + (this.getRowWidth() / 2);
     }
 
     public static class ConfigFieldEntry extends ContainerObjectSelectionList.Entry<ConfigFieldEntry> {
@@ -79,7 +48,6 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
         private final Button resetButton;
         private final StringWidget displayText;
 
-//        private final WidgetTooltipHolder tooltipHolder = new WidgetTooltipHolder();
         private final Tooltip tooltip;
 
         ConfigValue<?, ?> configValue;
@@ -96,6 +64,7 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
             // create label
             int maxTextWidth = this.parent.getRowWidth() - (CONTENT_PADDING * 4) - this.resetButton.getWidth() - ConfigValue.WIDTH;
             this.displayText = new StringWidget(this.configValue.getFieldName(), this.parent.minecraft.font);
+            this.displayText.alignLeft();
             this.displayText.setWidth(maxTextWidth);
 
             // create tooltip
@@ -110,7 +79,6 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
             // render reset button
             this.resetButton.active = !this.configValue.isDefault();
             this.resetButton.setPosition((contentX + width) - this.resetButton.getWidth() - CONTENT_PADDING, y);
-
             this.resetButton.render(graphics, mouseX, mouseY, delta);
 
             // render label
@@ -126,8 +94,6 @@ public class ConfigFieldList extends ContainerObjectSelectionList<ConfigFieldLis
             widget.setPosition((contentX + width) - (CONTENT_PADDING * 2) - this.resetButton.getWidth() - widget.getWidth(), y);
             widget.render(graphics, mouseX, mouseY, delta);
 
-            // tooltip
-//            this.tooltipHolder.refreshTooltipForNextRenderPass(hovered, this.isFocused(), this.getRectangle());
         }
 
         @Override

@@ -28,7 +28,6 @@ public class BooleanConfigValue extends ConfigValue<CycleButton<Boolean>, Boolea
                 .withCustomNarration((component) -> this.getFieldAndValueNarration(component.getValue() ? CommonComponents.GUI_YES : CommonComponents.GUI_NO))
                 .withTooltip((val) -> Tooltip.create(this.getFieldTooltip()))
                 .create(0, 0, WIDTH, ConfigFieldList.ROW_HEIGHT, Component.literal(""), (btn, val) -> {});
-
     }
 
     @Override

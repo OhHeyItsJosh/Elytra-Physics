@@ -3,7 +3,9 @@ package me.ImJoshh.elytra_physics.config.ui;
 import com.mojang.logging.LogUtils;
 import me.ImJoshh.elytra_physics.config.ui.widget.ConfigFieldList;
 import me.ImJoshh.elytra_physics.config.ui.widget.ConfigValue;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.Screen;
@@ -14,7 +16,10 @@ public abstract class ConfigScreen extends Screen {
 
     private final static Logger LOGGER = LogUtils.getLogger();
 
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 40, 40);
+    private final static int HEADER_SIZE = 40;
+    private final static int FOOTER_SIZE = 40;
+
+    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, HEADER_SIZE, FOOTER_SIZE);
     private ConfigFieldList configList;
 
     Button saveButton;
@@ -31,8 +36,9 @@ public abstract class ConfigScreen extends Screen {
         ConfigValue<?, ?>[] entries = this.getConfigEntries();
 
 //        this.layout.addTitleHeader(this.title, this.font);
+        this.layout.addToHeader(new StringWidget(this.title, this.font));
 
-        LinearLayout buttonRow = this.layout.addToFooter(new LinearLayout(0, 0, LinearLayout.Orientation.HORIZONTAL));
+        LinearLayout buttonRow = this.layout.addToFooter(new LinearLayout(Button.DEFAULT_WIDTH * 2 + 4, 0, LinearLayout.Orientation.HORIZONTAL));
 
         this.cancelButton = buttonRow.addChild(Button.builder(Component.translatable("gui.cancel"), (button) -> {
             this.onClose();
@@ -40,7 +46,8 @@ public abstract class ConfigScreen extends Screen {
 
         this.saveButton = buttonRow.addChild(Button.builder(Component.translatable("elytra_physics.configuration.save"), this::saveClicked).build());
 
-        this.configList = this.layout.addToContents(new ConfigFieldList(this.minecraft, entries));
+        this.configList = new ConfigFieldList(this.minecraft, entries, this.width, this.height, HEADER_SIZE, this.height - FOOTER_SIZE);
+        this.addWidget(this.configList);
 
         this.layout.visitWidgets(this::addRenderableWidget);
         this.repositionElements();
@@ -54,6 +61,12 @@ public abstract class ConfigScreen extends Screen {
     @Override
     protected void repositionElements() {
         this.layout.arrangeElements();
-//        this.configList.updateSize(this.width, this.layout);
+        this.configList.updateSize(this.width, this.height, HEADER_SIZE, this.height - FOOTER_SIZE);
+    }
+
+    @Override
+    public void render(GuiGraphics guiGraphics, int i, int j, float f) {
+        this.configList.render(guiGraphics, i, j, f);
+        super.render(guiGraphics, i, j, f);
     }
 }
