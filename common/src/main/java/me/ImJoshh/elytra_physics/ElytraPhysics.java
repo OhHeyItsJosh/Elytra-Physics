@@ -55,7 +55,7 @@ public class ElytraPhysics {
         float declineFactor = 0.2f * getConfig().getDeclineMultiplier();
         matrixStack.translate(0.0f, declineFactor * (avatarState.capeLean / 150.0f), 0.0f);
 
-        matrixStack.mulPose(transformation);
+        matrixStack.rotate(transformation);
     }
 
     public static float setWingSpread(AvatarRenderState avatarState) {
